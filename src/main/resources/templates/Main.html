@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>AR Factory</title>
+    <link rel="stylesheet" href="css/slide.css">
+    <link rel="stylesheet" href="css/test.css">
+
+</head>
+<body>
+<div th:insert="nav/navbar.html"></div>
+<div onclick="con_view()">구입문의</div>
+<div id="container">
+    <div class="slide_wrap">
+        <div class="slide_box">
+            <div class="slide_list clearfix">
+                <div class="slide_content slide01">
+                    <video style="width:400px;" muted onmouseover="this.play()" onmouseout="this.pause()" src="/img/vedio1.mp4" ></video>
+                </div>
+                <div class="slide_content slide02">
+                    <p>2</p>
+                </div>
+                <div class="slide_content slide03">
+                    <p>3</p>
+                </div>
+            </div>
+            <!-- // .slide_list -->
+        </div>
+        <!-- // .slide_box -->
+        <div class="slide_btn_box">
+            <button type="button" class="slide_btn_prev">Prev</button>
+            <button type="button" class="slide_btn_next">Next</button>
+        </div>
+        <!-- // .slide_btn_box -->
+        <ul class="slide_pagination"></ul>
+        <!-- // .slide_pagination -->
+    </div>
+    <!-- // .slide_wrap -->
+</div>
+
+<script src="/js/main/test.js/"></script>
+<script src="/js/main/main.js"></script>
+<script src="/js/main/slide.js"></script>
+</body>
+</html>

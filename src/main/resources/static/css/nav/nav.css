@@ -1,0 +1,21 @@
+.hide{
+text-align:center;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+.hide1{
+}
+
+.hide2{
+float:right;
+text-align:center;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+.navt{
+width:100px;
+}
