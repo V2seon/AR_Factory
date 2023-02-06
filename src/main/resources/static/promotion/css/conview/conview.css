@@ -1,0 +1,31 @@
+.maintext{
+font-size:32px;
+text-align:center;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+.mbox{
+width:50%;
+margin:auto;
+}
+
+.mbox1{
+float:right;
+}
+
+.t1{
+text-align: right
+}
+
+.t2{
+border-top-style: solid;
+border-top-width: 1px;
+border-top-color: black;
+display: flex;
+}
+
+.inputbox{
+width:90px;
+}
