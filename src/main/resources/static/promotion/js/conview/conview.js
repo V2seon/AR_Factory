@@ -76,12 +76,12 @@ let sendData = {
             "context" : Context
 }
 $.ajax({
-            url      : "/InCon",
+            url      : "/In_Af_inq",
             data     : sendData,
             type     : "POST",
             success : function(result) {
                     swal({
-                      title: "문의완료",
+                      title: "문의가 완료되었습니다.",
                       icon: "success",
                       closeOnClickOutside : false
                     }).then((result) =>{

@@ -1,4 +1,4 @@
-package com.elfe.arfactory.controller;
+package com.elfe.arfactory.promotion.controller;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -17,5 +17,7 @@ public class MainController {
     public String main(Model m, HttpServletRequest request){
         return "/promotion/Main";
     }
+
+
 
 }

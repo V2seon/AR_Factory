@@ -1,0 +1,50 @@
+.mainbox{
+text-align:center;
+display: flex;
+justify-content: center;
+align-items: center;
+width:100%;
+height:80%;
+}
+
+.subbox1{
+width:40%;
+height:100%;
+}
+
+.subbox2{
+width:40%;
+height:100%;
+}
+
+.reviewcon{
+width:100%;
+height:50%;
+}
+
+.reviewbox{
+width:100%;
+height:50%;
+}
+
+.sub1{
+width:100%;
+height:100%;
+background-color: beige;
+}
+
+.sub1nav{
+text-align:center;
+display: flex;
+justify-content: center;
+align-items: center;
+height:10%;
+}
+
+.navbox{
+width:25%;
+}
+
+.navbox:hover{
+cursor:pointer;
+}

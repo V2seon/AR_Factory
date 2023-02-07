@@ -1,24 +1,25 @@
-package com.elfe.arfactory.controller;
+package com.elfe.arfactory.promotion.controller;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import com.elfe.arfactory.dto.Af_inqDto;
 
 import javax.servlet.http.HttpServletRequest;
 
 @Controller
 @AllArgsConstructor
 @RequestMapping
-public class ConviewController {
+public class Af_inqController {
 
-    @GetMapping("/Con_view")
+    @GetMapping("/Af_inq")
     public String Con_view(Model m, HttpServletRequest request){
-        return "/promotion/Con_view";
+        return "/promotion/Af_inq";
     }
 
     @ResponseBody
-    @RequestMapping(method = RequestMethod.POST, value = "/InCon")
+    @RequestMapping(method = RequestMethod.POST, value = "/In_Af_inq")
     public String InCon_view(Model m, HttpServletRequest request,
                              @RequestParam(required = false, defaultValue = "", value = "conchoice")String Conchoice,
                              @RequestParam(required = false, defaultValue = "", value = "userchice")String Userchoice,
@@ -36,6 +37,9 @@ public class ConviewController {
         System.out.println(Company);
         System.out.println(Conname);
         System.out.println(Context);
-        return "/promotion/Con_view";
+
+//        Af_inqDto af_inqDto = new Af_inqDto(null, null,null,null,null,null,null,null,null);
+
+        return "/promotion/In_Af_inq";
     }
 }
