@@ -16,7 +16,7 @@ public class LoginService {
     @Transactional
     public int loginAdmin(String userid, String userpw){
         int returnValue = 0;
-        Optional<UserEntity> optionalAdminEntity = userRepository.findByAidAndApw(userid, userpw);
+        Optional<UserEntity> optionalAdminEntity = userRepository.findByAaidAndAapw(userid, userpw);
         if(!optionalAdminEntity.isPresent()){
             returnValue = 0;
         }else{

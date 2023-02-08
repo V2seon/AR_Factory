@@ -25,12 +25,15 @@ height:50%;
 .reviewbox{
 width:100%;
 height:50%;
+background-color: antiquewhite;
+border-radius:10px;
 }
 
 .sub1{
 width:100%;
 height:100%;
 background-color: beige;
+border-radius:10px;
 }
 
 .sub1nav{
