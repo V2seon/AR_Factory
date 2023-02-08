@@ -3,7 +3,7 @@ package com.elfe.arfactory.promotion.service;
 import com.elfe.arfactory.promotion.repository.Af_inqRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-import com.elfe.arfactory.dto.Af_inqDto;
+import com.elfe.arfactory.promotion.dto.Af_inqDto;
 
 import javax.transaction.Transactional;
 

@@ -1,6 +1,6 @@
-package com.elfe.arfactory.dto;
+package com.elfe.arfactory.promotion.dto;
 
-import com.elfe.arfactory.entity.Af_project_info_4Entity;
+import com.elfe.arfactory.promotion.entity.Af_project_info_4Entity;
 import lombok.*;
 
 import java.time.LocalDateTime;

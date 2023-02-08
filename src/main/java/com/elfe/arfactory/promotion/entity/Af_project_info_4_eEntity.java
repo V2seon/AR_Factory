@@ -1,4 +1,4 @@
-package com.elfe.arfactory.entity;
+package com.elfe.arfactory.promotion.entity;
 
 import lombok.Builder;
 import lombok.Getter;

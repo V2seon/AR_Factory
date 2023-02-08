@@ -1,4 +1,4 @@
-package com.elfe.arfactory.entity;
+package com.elfe.arfactory.promotion.entity;
 
 import lombok.Builder;
 import lombok.Getter;
@@ -7,6 +7,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.Optional;
 
 @NoArgsConstructor
 @Getter
@@ -66,4 +67,5 @@ public class Af_project_info_2Entity {
         API2_IDATETIME = aPI2_IDATETIME;
         API2_UDATETIME = aPI2_UDATETIME;
     }
+
 }

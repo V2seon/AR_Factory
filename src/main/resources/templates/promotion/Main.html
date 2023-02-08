@@ -9,7 +9,7 @@
 </head>
 <body>
 <div th:insert="/promotion/nav/navbar.html"></div>
-<span id="pjnum" hidden value="0"></span>
+<span value="0" id="pjnum" hidden ></span>
 <div class="mainbox">
     <div class="subbox1">
         <div class="reviewcon" id="container">
@@ -46,24 +46,61 @@
     <div class="subbox2">
         <div class="sub1">
             <div class="sub1nav">
-                <div class="navbox" value="1" onclick="viewcon(this)">콘텐츠 소개</div>
-                <div class="navbox" value="2">상세정보</div>
-                <div class="navbox" value="3">활용사례</div>
-                <div class="navbox" value="4">구입방식</div>
+                <div class="navbox" onclick="viewcon(1)">콘텐츠 소개</div>
+                <div class="navbox" onclick="viewcon(2)">상세정보</div>
+                <div class="navbox" onclick="viewcon(3)">활용사례</div>
+                <div class="navbox" onclick="viewcon(4)">구입방식</div>
             </div>
             <div class="databox" id="databox1">
+                <span>콘텐츠 소개</span>
+                <div th:text="${data.get().getAPI2_CONTENTS()}" id="api2_con">
 
+                </div>
             </div>
             <div class="databox" id="databox2" style="display:none;">
-
+                <span>상세정보</span>
+                <div>
+                    <span>권장인원</span>
+                    <div id="api3_con1"></div>
+                </div>
+                <div>
+                    <span>플레이방법</span>
+                    <div id="api3_con2"></div>
+                </div>
             </div>
             <div class="databox" id="databox3" style="display:none;">
-
+                <span>활용사례</span>
+                <div>
+                    <div id="api4_con1"></div>
+                </div>
+                <div>
+                    <div id="api4_con2"></div>
+                </div>
+                <div>
+                    <div id="api4_con3"></div>
+                </div>
+                <div>
+                    <div id="api4_con4"></div>
+                </div>
             </div>
             <div class="databox" id="databox4" style="display:none;">
-
+                <span>구입방식</span>
+                <div>
+                    <span>기간임대</span>
+                    <div id="api5_con1"></div>
+                </div>
+                <div>
+                    <span>이용횟수</span>
+                    <div id="api5_con2"></div>
+                </div>
+                <div>
+                    <span>계정할당</span>
+                    <div id="api5_con3"></div>
+                </div>
             </div>
-            <div onclick="af_inq()">구입문의</div>
+            <div>
+                <button onclick="af_inq()">구입문의</button>
+            </div>
         </div>
     </div>
 </div>
