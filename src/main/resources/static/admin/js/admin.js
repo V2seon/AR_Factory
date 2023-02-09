@@ -1,7 +1,7 @@
 function login(){
     $('#load').show();
-    const userId = document.getElementById("inid");
-    const userPw = document.getElementById("inpw");
+    const userId = document.getElementById("inid").value;
+    const userPw = document.getElementById("inpw").value;
     if(userId.value == null || userId.value == ""){
         $("#load").hide();
         swal({
@@ -16,13 +16,14 @@ function login(){
         });
     }else{
         let sendData = {
-            "id" : userId.value,
-            "pw" : userPw.value
+            "id" : userId,
+            "pw" : userPw
         }
         $.ajax({
             url : "/admin/userlogin",
             data : sendData,
             type : "GET",
+            datatype:'json',
             success : function(result){
                 $("#load").hide();
                 if(result.loginResult == "1"){

@@ -12,6 +12,7 @@
 </div>
 
 <div class="mbox">
+    <span th:text="${pjnum}" id="pjnum" hidden ></span>
     <div class="t1">* 항목은 필수 입력 사항</div>
     <div class="t2">
         <div style="text-align:left;">문의유형*</div>
@@ -43,7 +44,7 @@
             </label>
             <label>
                 <i>연락처*</i>
-                <input id="userphone" class="inputbox" type="text">
+                <input id="userphone" class="inputbox" type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
             </label>
             <label>
                 <i>이메일*</i>
@@ -122,12 +123,12 @@
     </div>
     <div>
         <button onclick="delCon()">취소</button>
-        <button onclick="inCon()">등록하기</button>
+        <button onclick="ininq()">등록하기</button>
     </div>
 </div>
 
 
-<script src="/promotion/js/conview/conview.js"></script>
+<script src="/promotion/js/af_inq/af_inq_in.js"></script>
 <script src="https://code.jquery.com/jquery-latest.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </body>

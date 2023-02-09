@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>AR Review</title>
+    <link rel="stylesheet" href="/promotion/css/af_review/af_review.css">
+</head>
+<body>
+후기 작성하기
+<span th:text="${pjnum}" id="pjnum"></span>
+
+<div>
+    <i>작성자</i>
+    <input id="rename" type="text">
+</div>
+<div>
+    <i>비밀번호</i>
+    <input id="repw" type="text">
+</div>
+<div>
+    <i>별점</i>
+    <div class="starpoint_wrap">
+        <div class="starpoint_box">
+            <label for="starpoint_1" class="label_star"></label>
+            <label for="starpoint_2" class="label_star"></label>
+            <label for="starpoint_3" class="label_star"></label>
+            <label for="starpoint_4" class="label_star"></label>
+            <label for="starpoint_5" class="label_star"></label>
+            <label for="starpoint_6" class="label_star"></label>
+            <label for="starpoint_7" class="label_star"></label>
+            <label for="starpoint_8" class="label_star"></label>
+            <label for="starpoint_9" class="label_star"></label>
+            <label for="starpoint_10" class="label_star"></label>
+            <input type="radio" name="starpoint" id="starpoint_1" class="star_radio" value="0.5">
+            <input type="radio" name="starpoint" id="starpoint_2" class="star_radio" value="1">
+            <input type="radio" name="starpoint" id="starpoint_3" class="star_radio" value="1.5">
+            <input type="radio" name="starpoint" id="starpoint_4" class="star_radio" value="2">
+            <input type="radio" name="starpoint" id="starpoint_5" class="star_radio" value="2.5">
+            <input type="radio" name="starpoint" id="starpoint_6" class="star_radio" value="3">
+            <input type="radio" name="starpoint" id="starpoint_7" class="star_radio" value="3.5">
+            <input type="radio" name="starpoint" id="starpoint_8" class="star_radio" value="4">
+            <input type="radio" name="starpoint" id="starpoint_9" class="star_radio" value="4.5">
+            <input type="radio" name="starpoint" id="starpoint_10" class="star_radio" value="5">
+            <span class="starpoint_bg"></span>
+        </div>
+    </div>
+</div>
+<div>
+    <i>후기내용</i>
+    <textarea id="retext" type="text"></textarea>
+</div>
+<div><button onclick="In_review()">후기저장</button></div>
+
+<script src="/promotion/js/af_review/af_review_in.js"></script>
+<script src="https://code.jquery.com/jquery-latest.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+</body>
+</html>

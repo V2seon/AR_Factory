@@ -9,7 +9,6 @@
 </head>
 <body>
 <div th:insert="/promotion/nav/navbar.html"></div>
-<span value="0" id="pjnum" hidden ></span>
 <div class="mainbox">
     <div class="subbox1">
         <div class="reviewcon" id="container">
@@ -41,7 +40,25 @@
             </div>
             <!-- // .slide_wrap -->
         </div>
-        <div class="reviewbox"></div>
+        <div class="reviewbox">
+            <div>
+                <span id="api1_name"></span>
+            </div>
+            <div>
+                <span id="api1_type"></span>
+            </div>
+            <div><button onclick="af_review()">후기작성</button></div>
+            <div>
+                <span id="ar_star_t"></span>
+            </div>
+            <div>
+                <span id="ar_name"></span>
+                <span id="ar_star"></span>
+            </div>
+            <div>
+                <span id="ar_content"></span>
+            </div>
+        </div>
     </div>
     <div class="subbox2">
         <div class="sub1">
@@ -100,6 +117,7 @@
             </div>
             <div>
                 <button onclick="af_inq()">구입문의</button>
+                <span id="pjnum" hidden >0</span>
             </div>
         </div>
     </div>

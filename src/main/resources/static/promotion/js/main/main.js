@@ -1,7 +1,20 @@
 function af_inq(){
-window.open("/Af_inq");
+const pjnum = document.getElementById('pjnum').innerText;
+console.log(pjnum)
+let sendData = {
+    "pjnum" : pjnum
 }
-
+$.ajax({
+            url      : "/Af_inq_go",
+            data     : sendData,
+            type     : "GET",
+            success : function(result) {
+                window.open("/Af_inq");
+            },
+            error:function(request,status,error){
+            }
+        });
+}
 
 function viewcon(num){
 
@@ -81,3 +94,22 @@ $.ajax({
 
 
 }
+
+function af_review(){
+const pjnum = document.getElementById('pjnum').innerText;
+console.log(pjnum)
+let sendData = {
+    "pjnum" : pjnum
+}
+$.ajax({
+            url      : "/Af_review_go",
+            data     : sendData,
+            type     : "GET",
+            success : function(result) {
+                window.open("/Af_review");
+            },
+            error:function(request,status,error){
+            }
+        });
+}
+

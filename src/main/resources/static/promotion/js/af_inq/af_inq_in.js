@@ -1,4 +1,4 @@
-function inCon(){
+function ininq(){
 const Contype = document.getElementsByName('typechoice');
 const Usertype = document.getElementsByName('typechoice1');
 const Username = document.getElementById('username').value;
@@ -7,6 +7,7 @@ const Useremail = document.getElementById('useremail').value;
 const Company = document.getElementById('company').value;
 const Department = document.getElementById('department').value;
 const Rank = document.getElementById('rank').value;
+const pjnum = document.getElementById('pjnum').innerText;
 const Conname = document.getElementById('conname').value;
 const Context = document.getElementById('context').value;
 for(var i=0; i<Contype.length; i++){
@@ -73,7 +74,8 @@ let sendData = {
             "useremail" : Useremail,
             "company" : Company,
             "conname" : Conname,
-            "context" : Context
+            "context" : Context,
+            "pjnum" : pjnum
 }
 $.ajax({
             url      : "/In_Af_inq",
