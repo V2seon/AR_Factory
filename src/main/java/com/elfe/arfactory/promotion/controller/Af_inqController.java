@@ -33,7 +33,7 @@ public class Af_inqController {
 
     @ResponseBody
     @RequestMapping(method = RequestMethod.POST, value = "/In_Af_inq")
-    public String InCon_view(Model m, HttpServletRequest request,
+    public String In_Af_inq(Model m, HttpServletRequest request,
                              @RequestParam(required = false, defaultValue = "", value = "conchoice")String Conchoice,
                              @RequestParam(required = false, defaultValue = "", value = "userchice")String Userchoice,
                              @RequestParam(required = false, defaultValue = "", value = "username")String Username,
@@ -42,7 +42,7 @@ public class Af_inqController {
                              @RequestParam(required = false, defaultValue = "", value = "company")String Company,
                              @RequestParam(required = false, defaultValue = "", value = "conname")String Conname,
                              @RequestParam(required = false, defaultValue = "", value = "context")String Context,
-                             @RequestParam(required = false, defaultValue = "", value = "pjnum")String pjnum){
+                             @RequestParam(required = false, defaultValue = "", value = "pjnum")Long pjnum){
         System.out.println(Conchoice);
         System.out.println(Userchoice);
         System.out.println(Username);
