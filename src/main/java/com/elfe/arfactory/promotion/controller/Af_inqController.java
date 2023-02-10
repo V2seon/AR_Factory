@@ -1,5 +1,6 @@
 package com.elfe.arfactory.promotion.controller;
 
+import com.elfe.arfactory.promotion.common.AES_256;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -42,7 +43,7 @@ public class Af_inqController {
                              @RequestParam(required = false, defaultValue = "", value = "company")String Company,
                              @RequestParam(required = false, defaultValue = "", value = "conname")String Conname,
                              @RequestParam(required = false, defaultValue = "", value = "context")String Context,
-                             @RequestParam(required = false, defaultValue = "", value = "pjnum")Long pjnum){
+                             @RequestParam(required = false, defaultValue = "", value = "pjnum")Long pjnum)throws Exception{
         System.out.println(Conchoice);
         System.out.println(Userchoice);
         System.out.println(Username);
@@ -53,13 +54,13 @@ public class Af_inqController {
         System.out.println(Context);
         System.out.println(pjnum);
 
-        try {
-            Userphone = encrypt(Userphone);
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        }
+        AES_256 aes256 = new AES_256();
+        // 암호화
+        String aes256CbcEncode = aes256.AesCBCEncode(Userphone);
+        System.out.println(aes256CbcEncode);
 
-        System.out.println(Userphone);
+        // 복호화
+//        String aes256CbcDeocde = aes256.AesCBCDecode(aes256CbcEncode);
 
 
 //        Af_inqDto af_inqDto = new Af_inqDto(null, null,null,null,null,null,null,null,null);
@@ -67,17 +68,4 @@ public class Af_inqController {
         return "/promotion/In_Af_inq";
     }
 
-    //암호화
-    public String encrypt(String text) throws NoSuchAlgorithmException {
-        MessageDigest md = MessageDigest.getInstance("SHA-256");
-        md.update(text.getBytes());
-        return bytesToHex(md.digest());
-    }
-    private String bytesToHex(byte[] bytes) {
-        StringBuilder builder = new StringBuilder();
-        for (byte b : bytes) {
-            builder.append(String.format("%02x", b));
-        }
-        return builder.toString();
-    }
 }

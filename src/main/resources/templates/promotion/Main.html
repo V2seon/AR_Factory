@@ -9,37 +9,37 @@
 </head>
 <body>
 <div th:insert="/promotion/nav/navbar.html"></div>
-<div class="mainbox">
+<div class="mainbox" th:each="Co : ${view}">
     <div class="subbox1">
-        <div class="reviewcon" id="container">
-            <div class="slide_wrap">
-                <div class="slide_box">
-                    <div class="slide_list clearfix">
-                        <div class="slide_content slide01">
-                            <p>1</p>
-                        </div>
-                        <div class="slide_content slide02">
-                            <p>2</p>
-                        </div>
-                        <div class="slide_content slide03">
-                            <p>3</p>
-                        </div>
-                    </div>
-                    <!-- // .slide_list -->
-                </div>
-                <ul class="slide_pagination"></ul>
+<!--        <div class="reviewcon" id="container">-->
+<!--            <div class="slide_wrap">-->
+<!--                <div class="slide_box">-->
+<!--                    <div class="slide_list clearfix">-->
+<!--                        <div class="slide_content slide01">-->
+<!--                            <p>1</p>-->
+<!--                        </div>-->
+<!--                        <div class="slide_content slide02">-->
+<!--                            <p>2</p>-->
+<!--                        </div>-->
+<!--                        <div class="slide_content slide03">-->
+<!--                            <p>3</p>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    &lt;!&ndash; // .slide_list &ndash;&gt;-->
+<!--                </div>-->
+<!--                <ul class="slide_pagination"></ul>-->
 
-                <!-- // .slide_box -->
-                <div class="slide_btn_box" hidden>
-                    <button type="button" class="slide_btn_prev">Prev</button>
-                    <button type="button" class="slide_btn_next">Next</button>
-                </div>
-                <!-- // .slide_btn_box -->
+<!--                &lt;!&ndash; // .slide_box &ndash;&gt;-->
+<!--                <div class="slide_btn_box" hidden>-->
+<!--                    <button type="button" class="slide_btn_prev">Prev</button>-->
+<!--                    <button type="button" class="slide_btn_next">Next</button>-->
+<!--                </div>-->
+<!--                &lt;!&ndash; // .slide_btn_box &ndash;&gt;-->
 
-                <!-- // .slide_pagination -->
-            </div>
-            <!-- // .slide_wrap -->
-        </div>
+<!--                &lt;!&ndash; // .slide_pagination &ndash;&gt;-->
+<!--            </div>-->
+<!--            &lt;!&ndash; // .slide_wrap &ndash;&gt;-->
+<!--        </div>-->
         <div class="reviewbox">
             <div>
                 <span id="api1_name"></span>
@@ -49,29 +49,28 @@
             </div>
             <div><button onclick="af_review()">후기작성</button></div>
             <div>
-                <span id="ar_star_t"></span>
+                <span th:text="'후기 ☆ '+ ${Co.get('avg')}" id="ar_star_t"></span>
+                <span th:text="'( '+${Co.get('size')+'점 '+' )'}"></span>
             </div>
-            <div>
-                <span id="ar_name"></span>
-                <span id="ar_star"></span>
-            </div>
-            <div>
-                <span id="ar_content"></span>
+            <div th:each="Co1 : ${Co.get('viewre')}">
+                <span th:text="${Co1.AR_NAME}" id="ar_name"></span>
+                <span th:text="${Co1.AR_STAR}" id="ar_star"></span>
+                <span th:text="${Co1.AR_CONTENT}" id="ar_content"></span>
             </div>
         </div>
     </div>
     <div class="subbox2">
         <div class="sub1">
             <div class="sub1nav">
-                <div class="navbox" onclick="viewcon(1)">콘텐츠 소개</div>
-                <div class="navbox" onclick="viewcon(2)">상세정보</div>
-                <div class="navbox" onclick="viewcon(3)">활용사례</div>
-                <div class="navbox" onclick="viewcon(4)">구입방식</div>
+                <div class="navbox" th:onclick="|javascript:viewcon(1,${Co.get('seq')})|">콘텐츠 소개</div>
+                <div class="navbox" th:onclick="|javascript:viewcon(2,${Co.get('seq')})|">상세정보</div>
+                <div class="navbox" th:onclick="|javascript:viewcon(3,${Co.get('seq')})|">활용사례</div>
+                <div class="navbox" th:onclick="|javascript:viewcon(4,${Co.get('seq')})|">구입방식</div>
             </div>
             <div class="databox" id="databox1">
                 <span>콘텐츠 소개</span>
-                <div th:text="${data.get().getAPI2_CONTENTS()}" id="api2_con">
-
+                <div id="api2_con">
+                    <!--th:text="${data.get().getAPI2_CONTENTS()}"-->
                 </div>
             </div>
             <div class="databox" id="databox2" style="display:none;">
@@ -116,8 +115,8 @@
                 </div>
             </div>
             <div>
-                <button onclick="af_inq()">구입문의</button>
-                <span id="pjnum" hidden >0</span>
+                <button th:onclick="af_inq(${Co.get('seq')})">구입문의</button>
+                <span th:text="${Co.get('seq')}" id="pjnum" hidden ></span>
             </div>
         </div>
     </div>

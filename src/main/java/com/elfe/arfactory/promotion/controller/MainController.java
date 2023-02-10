@@ -1,15 +1,6 @@
 package com.elfe.arfactory.promotion.controller;
 
-import com.elfe.arfactory.promotion.entity.Af_project_info_2Entity;
-import com.elfe.arfactory.promotion.entity.Af_project_info_2_eEntity;
-import com.elfe.arfactory.promotion.entity.Af_project_info_3Entity;
-import com.elfe.arfactory.promotion.entity.Af_project_info_3_eEntity;
-import com.elfe.arfactory.promotion.entity.Af_project_info_4Entity;
-import com.elfe.arfactory.promotion.entity.Af_project_info_4_eEntity;
-import com.elfe.arfactory.promotion.entity.Af_project_info_5Entity;
-import com.elfe.arfactory.promotion.entity.Af_project_info_5_eEntity;
-import com.elfe.arfactory.promotion.entity.Af_project_info_6Entity;
-import com.elfe.arfactory.promotion.entity.Af_project_info_6_eEntity;
+import com.elfe.arfactory.promotion.entity.*;
 import com.elfe.arfactory.promotion.repository.*;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -17,7 +8,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -25,6 +18,7 @@ import java.util.Optional;
 @RequestMapping
 public class MainController {
 
+    private Af_project_info_1Repository af_project_info_1Repository;
     private Af_project_info_2Repository af_project_info_2Repository;
     private Af_project_info_3Repository af_project_info_3Repository;
     private Af_project_info_4Repository af_project_info_4Repository;
@@ -35,12 +29,50 @@ public class MainController {
     private Af_project_info_4_eRepository af_project_info_4_eRepository;
     private Af_project_info_5_eRepository af_project_info_5_eRepository;
     private Af_project_info_6_eRepository af_project_info_6_eRepository;
+    private Af_reviewRepository af_reviewRepository;
 
     @GetMapping("/")
     public String main(Model m, HttpServletRequest request){
 
-        Optional<Af_project_info_2Entity> af_2Entity = af_project_info_2Repository.findByApi1seq(0L);
-        m.addAttribute("data",af_2Entity);
+        List<Af_project_info_1Entity> viewconlist = af_project_info_1Repository.findAll(1L);
+        List view = new ArrayList<>();
+        for(int i=0; i<viewconlist.size(); i++){
+            HashMap<String,Object> ad = new HashMap<String,Object>();
+            Long num = viewconlist.get(i).getAPI1_SEQ();
+
+            Optional<Af_project_info_2Entity> af_2Entity = af_project_info_2Repository.findByApi1seq(num);
+
+            // 보여지는 후기 리스트 5개
+            List<Af_reviewEntity> viewre = af_reviewRepository.findAll5(num);
+
+            // 후기 갯수 및 평균 평점 리스트
+            List<Af_reviewEntity> listcount = af_reviewRepository.findlistcount(num);
+
+            float avg = 0;
+            for(int j=0; j<listcount.size(); j++){
+                avg+= listcount.get(j).getAR_STAR();
+            }
+            avg = avg/listcount.size();
+
+            ad.put("seq",viewconlist.get(i).getAPI1_SEQ());
+//            ad.put("data",af_2Entity.get().getAPI2_CONTENTS());
+            ad.put("size",listcount.size());
+            ad.put("viewre",viewre);
+            ad.put("avg",String.format("%.1f",avg));
+            view.add(ad);
+        }
+
+        m.addAttribute("view",view);
+
+
+
+//        List<Af_reviewEntity> listcount1 = af_reviewRepository.findlistcount1();
+
+//        System.out.println("메인에 보여지는 리스트 카운트  = " + viewre.size());
+//
+//        System.out.println("상태 1 인 후기 리스트 카운트 = " +listcount.size());
+
+//        System.out.println("상태 1 인 후기 별점 평균값 = " +listcount1.get().getAR_STAR());
 
         return "/promotion/Main";
     }

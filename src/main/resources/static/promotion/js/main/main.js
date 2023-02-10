@@ -1,6 +1,4 @@
-function af_inq(){
-const pjnum = document.getElementById('pjnum').innerText;
-console.log(pjnum)
+function af_inq(pjnum){
 let sendData = {
     "pjnum" : pjnum
 }
@@ -16,11 +14,11 @@ $.ajax({
         });
 }
 
-function viewcon(num){
+function viewcon(num, pjnum){
 
-// value 는 인풋 속성이므로 div의 value는 어트리뷰트로 가져오셔야 합니다.
-const pjnum = $("#pjnum").attr("value");
 const lagse = document.getElementById('lagse');
+
+console.log(pjnum);
 
 let sendData = {
             "pjnum" : pjnum,

@@ -15,14 +15,14 @@ public class Af_reviewDto {
     private Long API1_SEQ;
     private String AR_NAME;
     private String AR_CONTENT;
-    private Long AR_STAR;
+    private float AR_STAR;
     private String AR_PASSWORD;
     private int AR_STATE;
     private LocalDateTime AR_IDATETIME;
     private LocalDateTime AR_UDATETIME;
 
     @Builder
-    public Af_reviewDto(Long aR_SEQ, Long aPI1_SEQ, String aR_NAME, String aR_CONTENT, Long aR_STAR,
+    public Af_reviewDto(Long aR_SEQ, Long aPI1_SEQ, String aR_NAME, String aR_CONTENT, float aR_STAR,
                         String aR_PASSWORD, int aR_STATE, LocalDateTime aPI6_IDATETIME, LocalDateTime aPI6_UDATETIME) {
         AR_SEQ = aR_SEQ;
         API1_SEQ = aPI1_SEQ;

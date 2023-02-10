@@ -30,7 +30,7 @@ public class Af_reviewEntity {
     private String AR_CONTENT;
 
     @Column(name = "AR_STAR")
-    private Long AR_STAR;
+    private float AR_STAR;
 
     @Column(name = "AR_PASSWORD")
     private String AR_PASSWORD;
@@ -45,7 +45,7 @@ public class Af_reviewEntity {
     private LocalDateTime AR_UDATETIME;
 
     @Builder
-    public Af_reviewEntity(Long aR_SEQ, Long aPI1_SEQ, String aR_NAME, String aR_CONTENT, Long aR_STAR,
+    public Af_reviewEntity(Long aR_SEQ, Long aPI1_SEQ, String aR_NAME, String aR_CONTENT, float aR_STAR,
                         String aR_PASSWORD, int aR_STATE, LocalDateTime aPI6_IDATETIME, LocalDateTime aPI6_UDATETIME) {
         AR_SEQ = aR_SEQ;
         API1_SEQ = aPI1_SEQ;
