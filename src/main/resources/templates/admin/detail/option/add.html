@@ -3,16 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <title>AR FACTORY</title>
+    <link href="/admin/css/main.css" rel="stylesheet">
+
+    <!-- Bootstrap -->
+    <link href="/admin/css/vendors/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="/admin/css/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="/admin/css/vendors/nprogress.css" rel="stylesheet">
+    <!-- jQuery custom content scroller -->
+    <link href="/admin/css/vendors/jquery.mCustomScrollbar.min.css" rel="stylesheet"/>
+
+    <!-- Custom Theme Style -->
+    <link href="/admin/css/custom.min.css" rel="stylesheet">
 </head>
 <body class="nav-md">
 <div class="container body">
     <div class="main_container">
-        <div th:insert="admin/AdminNav.html">
+        <div class="main_container">
+            <div th:insert="admin/AdminNav.html"></div>
             <!-- page content -->
             <div class="right_col" role="main">
 
 
-                <!--            메인페이지 내용 작성-->
+                <!-- 내용 작성-->
+                <h1>option add</h1>
 
 
             </div>
@@ -20,16 +35,33 @@
 
             <!-- footer content -->
             <footer>
-                <div class="pull-right">
-                    Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
-                </div>
                 <div class="clearfix"></div>
             </footer>
             <!-- /footer content -->
         </div>
     </div>
 </div>
+<div id="load"><img src="/admin/images/spinner.gif" alt="loading"></div>
 
 
+<script src="/admin/js/admin.js"></script>
+<script src="https://code.jquery.com/jquery-latest.js"></script>
+<!-- swal창 띄우기 -->
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+
+<!-- jQuery -->
+<script src="/admin/js/design/vendors/jquery.min.js"></script>
+<!-- Bootstrap -->
+<script src="/admin/js/design/vendors/bootstrap.bundle.min.js"></script>
+<!-- FastClick -->
+<script src="/admin/js/design/vendors/fastclick.js"></script>
+<!-- NProgress -->
+<script src="/admin/js/design/vendors/nprogress.js"></script>
+<!-- jQuery custom content scroller -->
+<script src="/admin/js/design/vendors/jquery.mCustomScrollbar.concat.min.js"></script>
+
+<!-- Custom Theme Scripts -->
+<script src="/admin/js/design/custom.min.js"></script>
 </body>
 </html>
