@@ -13,6 +13,8 @@
     <link href="/admin/css/vendors/nprogress.css" rel="stylesheet">
     <!-- jQuery custom content scroller -->
     <link href="/admin/css/vendors/jquery.mCustomScrollbar.min.css" rel="stylesheet"/>
+    <!-- Dropzone.js -->
+    <link href="/admin/css/vendors/dropzone.min.css" rel="stylesheet">
 
     <!-- Custom Theme Style -->
     <link href="/admin/css/custom.min.css" rel="stylesheet">
@@ -21,13 +23,48 @@
 <div class="container body">
     <div class="main_container">
         <div class="main_container">
-            <div th:insert="admin/AdminNav.html"></div>
+            <div th:insert="/admin/AdminNav.html"></div>
             <!-- page content -->
             <div class="right_col" role="main">
 
+                <div class="page-title">
+                    <div class="title_left">
+                        <h3>콘텐츠 등록</h3>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
 
-                <!-- 내용 작성-->
-                <h1>conttents add</h1>
+                <div class="row">
+                    <div class="col-md-12 col-sm-12  ">
+                        <div class="x_panel">
+                            <div class="x_content">
+                                <form data-parsley-validate>
+                                    <label class="col-form-label col-md-3 col-sm-3">이미지 업로드(최대 6장) : </label>
+                                    <br>
+                                    <br>
+                                    <input type="image" style="display:none" id="cttImg1">
+                                    <div action="form_upload.html" class="dropzone">
+                                    </div>
+                                    <br />
+                                    <div>
+                                    <label class="col-form-label col-md-3 col-sm-3" for="contentMessage">콘텐츠 설명 : </label>
+                                    <br>
+                                    <textarea required="required" name='contentMessage' id="contentMessage" class="big_area"></textarea>
+                                    </div>
+
+                                    <div class="ln_solid">
+                                        <div class="form-group">
+                                            <div class="col-md-6 offset-md-3">
+                                                <button type='submit' class="btn btn-primary">Submit</button>
+                                                <button type='reset' class="btn btn-success">Reset</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
 
             </div>
@@ -60,6 +97,8 @@
 <script src="/admin/js/design/vendors/nprogress.js"></script>
 <!-- jQuery custom content scroller -->
 <script src="/admin/js/design/vendors/jquery.mCustomScrollbar.concat.min.js"></script>
+<!-- Dropzone.js -->
+<script src="/admin/js/design/vendors/dropzone.min.js"></script>
 
 <!-- Custom Theme Scripts -->
 <script src="/admin/js/design/custom.min.js"></script>

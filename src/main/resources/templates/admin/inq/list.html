@@ -21,13 +21,94 @@
 <div class="container body">
     <div class="main_container">
         <div class="main_container">
-            <div th:insert="admin/AdminNav.html"></div>
+            <div th:insert="/admin/AdminNav.html"></div>
             <!-- page content -->
             <div class="right_col" role="main">
+                <div class="">
+                    <div class="page-title">
+                        <div class="title_left">
+                            <h3>문의페이지 목록</h3>
+                        </div>
+
+                        <div class="title_right">
+                            <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Search for...">
+                                    <span class="input-group-btn">
+                      <button class="btn btn-secondary" type="button">Go!</button>
+                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="clearfix"></div>
 
 
-                <!-- 내용 작성-->
-                <h1>inquiry list</h1>
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12  ">
+
+
+                            <div class="x_panel">
+
+
+                                <div class="x_content">
+                                    <div class="table-responsive">
+                                        <table class="table table-striped jambo_table bulk_action">
+                                            <thead>
+                                            <tr class="headings">
+                                                <th>#</th>
+                                                <th>문의 고객</th>
+                                                <th>전화 번호</th>
+                                                <th>선택한 솔루션 옵션</th>
+                                                <th>문의 상태</th>
+                                                <th>구매 상태</th>
+                                                <th>등록 날짜</th>
+                                                <th>최종 수정 날짜</th>
+                                                <th>수정</th>
+                                            </tr>
+                                            </thead>
+
+                                            <tbody>
+                                            <tr class="even pointer">
+                                                <th scope="row">0</font></th>
+                                                <td>111</td>
+                                                <td>222</td>
+                                                <td>333</td>
+                                                <td>444</td>
+                                                <td>555</td>
+                                                <td>666</td>
+                                                <td>777</td>
+                                                <td>
+                                                    <button onclick="solution_edit()" type="button" class="btn btn-info btn-sm">
+                                                        <i class="fa fa-edit">수정</i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr class="even pointer">
+                                                <th scope="row">00</font></th>
+                                                <td>111</td>
+                                                <td>222</td>
+                                                <td>333</td>
+                                                <td>444</td>
+                                                <td>555</td>
+                                                <td>666</td>
+                                                <td>777</td>
+                                                <td>
+                                                    <button onclick="solution_edit()" type="button" class="btn btn-info btn-sm">
+                                                        <i class="fa fa-edit">수정</i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
 
             </div>
@@ -44,7 +125,7 @@
 <div id="load"><img src="/admin/images/spinner.gif" alt="loading"></div>
 
 
-<script src="/admin/js/admin.js"></script>
+<script src="/admin/js/solution.js"></script>
 <script src="https://code.jquery.com/jquery-latest.js"></script>
 <!-- swal창 띄우기 -->
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>

@@ -21,13 +21,13 @@
 <div class="container body">
     <div class="main_container">
         <div class="main_container">
-            <div th:insert="admin/AdminNav.html"></div>
+            <div th:insert="/admin/AdminNav.html"></div>
             <!-- page content -->
             <div class="right_col" role="main">
                 <div class="">
                     <div class="page-title">
                         <div class="title_left">
-                            <h3>solution list</h3>
+                            <h3>솔루션 목록</h3>
                         </div>
 
                         <div class="title_right">
@@ -52,7 +52,7 @@
                             <div class="x_panel">
 
                                 <div class="x_title">
-                                    <button class="btn btn-round btn-secondary">등록</button>
+                                    <button onclick="solution_add()" type="button" class="btn btn-round btn-primary"><i class="fa fa-pencil">등록</i></button>
                                     <div class="clearfix"></div>
                                 </div>
 
@@ -62,36 +62,41 @@
                                         <table class="table table-striped jambo_table bulk_action">
                                             <thead>
                                             <tr class="headings">
-                                                <th class="column-title">번호</th>
-                                                <th class="column-title">패키지 이름</th>
-                                                <th class="column-title">패키지 타입</th>
-                                                <th class="column-title">노출여부</th>
-                                                <th class="column-title">등록날짜</th>
-                                                <th class="column-title">최종 수정날짜</th>
-                                                <th class="column-title no-link last"><span class="nobr">수정</span>
-                                                </th>
+                                                <th>#</th>
+                                                <th>패키지 이름</th>
+                                                <th>패키지 타입</th>
+                                                <th>노출여부</th>
+                                                <th>등록날짜</th>
+                                                <th>최종 수정날짜</th>
+                                                <th>수정</th>
                                             </tr>
                                             </thead>
 
                                             <tbody>
                                             <tr class="even pointer">
-                                                <td class=" ">000</td>
-                                                <td class=" ">111</td>
-                                                <td class=" ">222</td>
-                                                <td class=" ">333</td>
-                                                <td class=" ">444</td>
-                                                <td class=" ">555</td>
-                                                <td class=" last"><a href="#">수정</a>
+                                                <th scope="row">0</th>
+                                                <td>111</td>
+                                                <td>222</td>
+                                                <td>333</td>
+                                                <td>444</td>
+                                                <td>555</td>
+                                                <td>
+                                                    <button onclick="solution_edit()" type="button" class="btn btn-info btn-sm">
+                                                        <i class="fa fa-edit">수정</i>
+                                                    </button>
                                                 </td>
                                             </tr>
                                             <tr class="even pointer">
-                                                <td class=" ">000</td>
-                                                <td class=" ">111</td>
-                                                <td class=" ">222</td>
-                                                <td class=" ">333</td>
-                                                <td class=" ">444</td>
-                                                <td class=" ">555</td>
-                                                <td class=" last"><a href="#">수정</a>
+                                                <th scope="row">00</th>
+                                                <td>111</td>
+                                                <td>222</td>
+                                                <td>333</td>
+                                                <td>444</td>
+                                                <td>555</td>
+                                                <td>
+                                                    <button onclick="solution_edit()" type="button" class="btn btn-info btn-sm">
+                                                        <i class="fa fa-edit">수정</i>
+                                                    </button>
                                                 </td>
                                             </tr>
                                             </tbody>
@@ -119,7 +124,7 @@
 <div id="load"><img src="/admin/images/spinner.gif" alt="loading"></div>
 
 
-<script src="/admin/js/admin.js"></script>
+<script src="/admin/js/solution.js"></script>
 <script src="https://code.jquery.com/jquery-latest.js"></script>
 <!-- swal창 띄우기 -->
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>

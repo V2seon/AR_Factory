@@ -13,6 +13,18 @@
     <link href="/admin/css/vendors/nprogress.css" rel="stylesheet">
     <!-- jQuery custom content scroller -->
     <link href="/admin/css/vendors/jquery.mCustomScrollbar.min.css" rel="stylesheet"/>
+    <!-- iCheck -->
+    <link href="/admin/css/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+    <!-- bootstrap-wysiwyg -->
+    <link href="/admin/css/vendors/prettify.min.css" rel="stylesheet">
+    <!-- Select2 -->
+    <link href="/admin/css/vendors/select2.min.css" rel="stylesheet">
+    <!-- Switchery -->
+    <link href="/admin/css/vendors/switchery.min.css" rel="stylesheet">
+    <!-- starrr -->
+    <link href="/admin/css/vendors/starrr.css" rel="stylesheet">
+    <!-- bootstrap-daterangepicker -->
+    <link href="/admin/css/vendors/daterangepicker.css" rel="stylesheet">
 
     <!-- Custom Theme Style -->
     <link href="/admin/css/custom.min.css" rel="stylesheet">
@@ -21,15 +33,85 @@
 <div class="container body">
     <div class="main_container">
         <div class="main_container">
-            <div th:insert="admin/AdminNav.html"></div>
+            <div th:insert="/admin/AdminNav.html"></div>
             <!-- page content -->
             <div class="right_col" role="main">
 
+                <div class="page-title">
+                    <div class="title_left">
+                        <h3>솔루션 등록</h3>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="row">
+                    <div class="col-md-12 col-sm-12">
+                        <div class="x_panel">
+                            <div class="x_content">
+                                <form class="" action="" method="post" novalidate>
+                                    <div class="field item form-group">
+                                        <label class="col-form-label col-md-3 col-sm-3  label-align">패키지 이름</label>
+                                        <div class="col-md-6 col-sm-6">
+                                            <input class="form-control" name="name_kor" type="text" required="required" />
+                                        </div>
+                                    </div>
+                                    <div class="field item form-group">
+                                        <label class="col-form-label col-md-3 col-sm-3  label-align">패키지 타입</label>
+                                        <div class="col-md-6 col-sm-6">
+                                            <input class="form-control" name="type_kor" type="text" required="required" />
+                                        </div>
+                                    </div>
+                                    <div class="field item form-group">
+                                        <label class="col-form-label col-md-3 col-sm-3  label-align">영문 패키지 이름</label>
+                                        <div class="col-md-6 col-sm-6">
+                                            <input class="form-control" name="name_eng" type="text" required="required" />
+                                        </div>
+                                    </div>
+                                    <div class="field item form-group">
+                                        <label class="col-form-label col-md-3 col-sm-3  label-align">영문 패키지 타입</label>
+                                        <div class="col-md-6 col-sm-6">
+                                            <input class="form-control" name="type_eng" type="text" required="required" />
+                                        </div>
+                                    </div>
+                                    <div class="field item form-group">
+                                        <label class="col-form-label col-md-3 col-sm-3  label-align">구글 스토어 링크</label>
+                                        <div class="col-md-6 col-sm-6">
+                                            <input class="form-control" name="googleLink" type="text" required="required" />
+                                        </div>
+                                    </div>
+                                    <div class="field item form-group">
+                                        <label class="col-form-label col-md-3 col-sm-3  label-align">애플 앱스토어 링크</label>
+                                        <div class="col-md-6 col-sm-6">
+                                            <input class="form-control" name="appleLink" type="text" required="required" />
+                                        </div>
+                                    </div>
+                                    <div class="field item form-group">
+                                        <label class="col-form-label col-md-3 col-sm-3  label-align">메인 페이지 솔루션 순서</label>
+                                        <div class="col-md-6 col-sm-6">
+                                            <input class="form-control" name="mainNum" type="text" required="required" />
+                                        </div>
+                                    </div>
+                                    <div class="field item form-group">
+                                        <label class="col-form-label col-md-3 col-sm-3  label-align">노출여부</label>
+                                        <p>
+                                            비노출 :
+                                            <input type="radio" class="flat" name="showNum" id="show0" value="0" checked="" required />  노출   :
+                                            <input type="radio" class="flat" name="showNum" id="show1" value="1" />
+                                        </p>
+                                    </div>
 
-                <!-- 내용 작성-->
-                <h1>solution add</h1>
-
-
+                                    <div class="ln_solid">
+                                        <div class="form-group">
+                                            <div class="col-md-6 offset-md-3">
+                                                <button type='submit' class="btn btn-primary">Submit</button>
+                                                <button type='reset' class="btn btn-success">Reset</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <!-- /page content -->
 
@@ -60,6 +142,31 @@
 <script src="/admin/js/design/vendors/nprogress.js"></script>
 <!-- jQuery custom content scroller -->
 <script src="/admin/js/design/vendors/jquery.mCustomScrollbar.concat.min.js"></script>
+<!-- bootstrap-progressbar -->
+<script src="/admin/js/design/vendors/bootstrap-progressbar.min.js"></script>
+<!-- iCheck -->
+<script src="/admin/js/design/vendors/icheck.min.js"></script>
+<!-- bootstrap-daterangepicker -->
+<script src="/admin/js/design/vendors/moment.min.js"></script>
+<script src="/admin/js/design/vendors/daterangepicker.js"></script>
+<!-- bootstrap-wysiwyg -->
+<script src="/admin/js/design/vendors/bootstrap-wysiwyg.min.js"></script>
+<script src="/admin/js/design/vendors/jquery.hotkeys.js"></script>
+<script src="/admin/js/design/vendors/prettify.js"></script>
+<!-- jQuery Tags Input -->
+<script src="/admin/js/design/vendors/jquery.tagsinput.js"></script>
+<!-- Switchery -->
+<script src="/admin/js/design/vendors/switchery.min.js"></script>
+<!-- Select2 -->
+<script src="/admin/js/design/vendors/select2.full.min.js"></script>
+<!-- Parsley -->
+<script src="/admin/js/design/vendors/parsley.min.js"></script>
+<!-- Autosize -->
+<script src="/admin/js/design/vendors/autosize.min.js"></script>
+<!-- jQuery autocomplete -->
+<script src="/admin/js/design/vendors/jquery.autocomplete.min.js"></script>
+<!-- starrr -->
+<script src="/admin/js/design/vendors/starrr.js"></script>
 
 <!-- Custom Theme Scripts -->
 <script src="/admin/js/design/custom.min.js"></script>

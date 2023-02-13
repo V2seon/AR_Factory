@@ -2,13 +2,14 @@ function login(){
     $('#load').show();
     const userId = document.getElementById("inid").value;
     const userPw = document.getElementById("inpw").value;
-    if(userId.value == null || userId.value == ""){
+
+    if(userId == null || userId == ""){
         $("#load").hide();
         swal({
             text : "아이디를 입력해주세요.",
             icon : "info"
         });
-    }else if(userPw.value == null || userPw.value == ""){
+    }else if(userPw == null || userPw == ""){
         $("#load").hide();
         swal({
             text : "비밀번호를 입력해주세요.",
