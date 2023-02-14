@@ -44,18 +44,15 @@
 
                     <div class="clearfix"></div>
 
-
                     <div class="row">
                         <div class="col-md-12 col-sm-12  ">
-
 
                             <div class="x_panel">
 
                                 <div class="x_title">
-                                    <button onclick="solution_add()" type="button" class="btn btn-round btn-primary"><i class="fa fa-pencil">등록</i></button>
+                                    <button onclick="location.href='/admin/solution/add'" type="button" class="btn btn-round btn-primary"><i class="fa fa-pencil">등록</i></button>
                                     <div class="clearfix"></div>
                                 </div>
-
 
                                 <div class="x_content">
                                     <div class="table-responsive">
@@ -65,37 +62,36 @@
                                                 <th>#</th>
                                                 <th>패키지 이름</th>
                                                 <th>패키지 타입</th>
+                                                <th>영문 패키지 이름</th>
+                                                <th>영문 패키지 타입</th>
                                                 <th>노출여부</th>
                                                 <th>등록날짜</th>
                                                 <th>최종 수정날짜</th>
                                                 <th>수정</th>
+                                                <th>삭제</th>
                                             </tr>
                                             </thead>
 
                                             <tbody>
-                                            <tr class="even pointer">
-                                                <th scope="row">0</th>
-                                                <td>111</td>
-                                                <td>222</td>
-                                                <td>333</td>
-                                                <td>444</td>
-                                                <td>555</td>
+                                            <tr class="even pointer" th:each="Co,i : ${solutionlist}">
+                                                <th scope="row" th:text="${i.count}">번호</th>
+                                                <td th:text="${Co.API1_NAME}">패키지 이름</td>
+                                                <td th:text="${Co.API1_TYPE}">패키지 타입</td>
+                                                <td th:text="${Co.API1_NAME_E}">패키지 이름</td>
+                                                <td th:text="${Co.API1_TYPE_R}">패키지 타입</td>
+                                                <td th:if="${Co.API1_STATE==0}">비노출</td>
+                                                <td th:if="${Co.API1_STATE==1}">노출</td>
+                                                <td th:text="${Co.API1_IDATETIME}">등록날짜</td>
+                                                <td th:if="${Co.API1_UDATETIME!=null}" th:text="${Co.API1_UDATETIME}">수정날짜</td>
+                                                <td th:if="${Co.API1_UDATETIME==null}">---</td>
                                                 <td>
-                                                    <button onclick="solution_edit()" type="button" class="btn btn-info btn-sm">
-                                                        <i class="fa fa-edit">수정</i>
+                                                    <button th:onclick="solution_edit([[${Co.API1_SEQ}]])" type="button" class="btn btn-info btn-sm">
+                                                        <i class="fa fa-edit"> 수정 </i>
                                                     </button>
                                                 </td>
-                                            </tr>
-                                            <tr class="even pointer">
-                                                <th scope="row">00</th>
-                                                <td>111</td>
-                                                <td>222</td>
-                                                <td>333</td>
-                                                <td>444</td>
-                                                <td>555</td>
                                                 <td>
-                                                    <button onclick="solution_edit()" type="button" class="btn btn-info btn-sm">
-                                                        <i class="fa fa-edit">수정</i>
+                                                    <button th:onclick="solution_delete([[${Co.API1_SEQ}]])" type="button" class="btn btn-danger btn-sm">
+                                                        <i class="fa fa-trash-o"> 삭제 </i>
                                                     </button>
                                                 </td>
                                             </tr>

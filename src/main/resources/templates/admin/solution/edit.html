@@ -13,6 +13,18 @@
     <link href="/admin/css/vendors/nprogress.css" rel="stylesheet">
     <!-- jQuery custom content scroller -->
     <link href="/admin/css/vendors/jquery.mCustomScrollbar.min.css" rel="stylesheet"/>
+    <!-- iCheck -->
+    <link href="/admin/css/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+    <!-- bootstrap-wysiwyg -->
+    <link href="/admin/css/vendors/prettify.min.css" rel="stylesheet">
+    <!-- Select2 -->
+    <link href="/admin/css/vendors/select2.min.css" rel="stylesheet">
+    <!-- Switchery -->
+    <link href="/admin/css/vendors/switchery.min.css" rel="stylesheet">
+    <!-- starrr -->
+    <link href="/admin/css/vendors/starrr.css" rel="stylesheet">
+    <!-- bootstrap-daterangepicker -->
+    <link href="/admin/css/vendors/daterangepicker.css" rel="stylesheet">
 
     <!-- Custom Theme Style -->
     <link href="/admin/css/custom.min.css" rel="stylesheet">
@@ -21,15 +33,85 @@
 <div class="container body">
     <div class="main_container">
         <div class="main_container">
-            <div th:insert="admin/AdminNav.html"></div>
+            <div th:insert="/admin/AdminNav.html"></div>
             <!-- page content -->
             <div class="right_col" role="main">
 
+                <div class="page-title">
+                    <div class="title_left">
+                        <h3>솔루션 등록</h3>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="row">
+                    <div class="col-md-12 col-sm-12">
+                        <div class="x_panel">
+                            <div class="x_content">
+                                <form class="" action="" method="post" novalidate>
+                                    <div class="field item form-group">
+                                        <label class="col-form-label col-md-3 col-sm-3  label-align">패키지 이름</label>
+                                        <div class="col-md-6 col-sm-6">
+                                            <input th:value="${name}" class="form-control" id="SNameKorEdit" type="text" required="required" />
+                                        </div>
+                                    </div>
+                                    <div class="field item form-group">
+                                        <label class="col-form-label col-md-3 col-sm-3  label-align">패키지 타입</label>
+                                        <div class="col-md-6 col-sm-6">
+                                            <input th:value="${type}" class="form-control" id="STypeKorEdit" type="text" required="required" />
+                                        </div>
+                                    </div>
+                                    <div class="field item form-group">
+                                        <label class="col-form-label col-md-3 col-sm-3  label-align">영문 패키지 이름</label>
+                                        <div class="col-md-6 col-sm-6">
+                                            <input th:value="${name_e}" class="form-control" id="SNameEngEdit" type="text" required="required" />
+                                        </div>
+                                    </div>
+                                    <div class="field item form-group">
+                                        <label class="col-form-label col-md-3 col-sm-3  label-align">영문 패키지 타입</label>
+                                        <div class="col-md-6 col-sm-6">
+                                            <input th:value="${type_e}" class="form-control" id="STypeEngEdit" type="text" required="required" />
+                                        </div>
+                                    </div>
+                                    <div class="field item form-group">
+                                        <label class="col-form-label col-md-3 col-sm-3  label-align">구글 스토어 링크</label>
+                                        <div class="col-md-6 col-sm-6">
+                                            <input th:value="${google}" class="form-control" id="SGoogleLinkEdit" type="text" required="required" />
+                                        </div>
+                                    </div>
+                                    <div class="field item form-group">
+                                        <label class="col-form-label col-md-3 col-sm-3  label-align">애플 앱스토어 링크</label>
+                                        <div class="col-md-6 col-sm-6">
+                                            <input th:value="${apple}" class="form-control" id="SAppleLinkEdit" type="text" required="required" />
+                                        </div>
+                                    </div>
+                                    <div class="field item form-group">
+                                        <label class="col-form-label col-md-3 col-sm-3  label-align">메인 페이지 솔루션 순서</label>
+                                        <div class="col-md-6 col-sm-6">
+                                            <input th:value="${viewSeq}" class="form-control" id="SMainNumEdit" type="number" required="required" />
+                                        </div>
+                                    </div>
+                                    <div class="field item form-group">
+                                        <label class="col-form-label col-md-3 col-sm-3  label-align">노출여부</label>
+                                        <p>
+                                            비노출 :
+                                            <input type="radio" class="flat" name="SShowNum" value="0" th:checked="${state}==0" checked="" required />  노출   :
+                                            <input type="radio" class="flat" name="SShowNum" value="1" th:checked="${state}==1" />
+                                        </p>
+                                    </div>
 
-                <!-- 내용 작성-->
-                <h1>solution edit</h1>
-
-
+                                    <div class="ln_solid">
+                                        <div class="form-group">
+                                            <div class="col-md-6 offset-md-3">
+                                                <button type='button' class="btn btn-primary" th:onclick="solution_editSave([[${seq}]])">Submit</button>
+                                                <button type='reset' class="btn btn-success">Reset</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <!-- /page content -->
 
@@ -44,7 +126,7 @@
 <div id="load"><img src="/admin/images/spinner.gif" alt="loading"></div>
 
 
-<script src="/admin/js/admin.js"></script>
+<script src="/admin/js/solution.js"></script>
 <script src="https://code.jquery.com/jquery-latest.js"></script>
 <!-- swal창 띄우기 -->
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
@@ -60,6 +142,31 @@
 <script src="/admin/js/design/vendors/nprogress.js"></script>
 <!-- jQuery custom content scroller -->
 <script src="/admin/js/design/vendors/jquery.mCustomScrollbar.concat.min.js"></script>
+<!-- bootstrap-progressbar -->
+<script src="/admin/js/design/vendors/bootstrap-progressbar.min.js"></script>
+<!-- iCheck -->
+<script src="/admin/js/design/vendors/icheck.min.js"></script>
+<!-- bootstrap-daterangepicker -->
+<script src="/admin/js/design/vendors/moment.min.js"></script>
+<script src="/admin/js/design/vendors/daterangepicker.js"></script>
+<!-- bootstrap-wysiwyg -->
+<script src="/admin/js/design/vendors/bootstrap-wysiwyg.min.js"></script>
+<script src="/admin/js/design/vendors/jquery.hotkeys.js"></script>
+<script src="/admin/js/design/vendors/prettify.js"></script>
+<!-- jQuery Tags Input -->
+<script src="/admin/js/design/vendors/jquery.tagsinput.js"></script>
+<!-- Switchery -->
+<script src="/admin/js/design/vendors/switchery.min.js"></script>
+<!-- Select2 -->
+<script src="/admin/js/design/vendors/select2.full.min.js"></script>
+<!-- Parsley -->
+<script src="/admin/js/design/vendors/parsley.min.js"></script>
+<!-- Autosize -->
+<script src="/admin/js/design/vendors/autosize.min.js"></script>
+<!-- jQuery autocomplete -->
+<script src="/admin/js/design/vendors/jquery.autocomplete.min.js"></script>
+<!-- starrr -->
+<script src="/admin/js/design/vendors/starrr.js"></script>
 
 <!-- Custom Theme Scripts -->
 <script src="/admin/js/design/custom.min.js"></script>
