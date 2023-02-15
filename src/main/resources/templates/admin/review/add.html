@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>AR FACTORY</title>
     <link href="/admin/css/main.css" rel="stylesheet">
+    <link rel="stylesheet" href="/promotion/css/af_review/af_review.css">
 
     <!-- Bootstrap -->
     <link href="/admin/css/vendors/bootstrap.min.css" rel="stylesheet">
@@ -49,47 +50,75 @@
                             <div class="x_content">
                                 <form class="" action="" method="post" novalidate>
                                     <div class="field item form-group">
-                                        <label class="col-form-label col-md-3 col-sm-3  label-align">글쓴이</label>
-                                        <div class="col-md-6 col-sm-6">
-                                            <input class="form-control" name="name_kor" type="text" required="required" />
-                                        </div>
+                                        <label class="col-form-label col-md-3 col-sm-3  label-align">패키지 선택</label>
+                                        <p th:each="Co,i: ${data}">
+                                            <span th:text="'&nbsp;&nbsp;&nbsp;'+${Co.API1_NAME}+'&nbsp;:'"> 패키지 : </span>
+                                            <input th:if="${i.count}==1"  type="radio" class="flat" name="RePackage" th:value="${Co.API1_SEQ}" checked="" required />
+                                            <input th:if="${i.count}!=1"  type="radio" class="flat" name="RePackage" th:value="${Co.API1_SEQ}" required />
+                                        </p>
                                     </div>
-                                    <div class="field item form-group">
-                                        <label class="col-form-label col-md-3 col-sm-3  label-align">리뷰내용</label>
-                                        <div class="col-md-6 col-sm-6">
-                                            <input class="form-control" name="type_kor" type="text" required="required" />
-                                        </div>
-                                    </div>
+
                                     <div class="field item form-group">
                                         <label class="col-form-label col-md-3 col-sm-3  label-align">별점</label>
+
+                                            <div class="starpoint_wrap">
+                                                <div class="starpoint_box">
+                                                    <label for="starpoint_1" class="label_star"></label>
+                                                    <label for="starpoint_2" class="label_star"></label>
+                                                    <label for="starpoint_3" class="label_star"></label>
+                                                    <label for="starpoint_4" class="label_star"></label>
+                                                    <label for="starpoint_5" class="label_star"></label>
+                                                    <label for="starpoint_6" class="label_star"></label>
+                                                    <label for="starpoint_7" class="label_star"></label>
+                                                    <label for="starpoint_8" class="label_star"></label>
+                                                    <label for="starpoint_9" class="label_star"></label>
+                                                    <label for="starpoint_10" class="label_star"></label>
+                                                    <input type="radio" name="starpoint" id="starpoint_1" class="star_radio" value=0.5>
+                                                    <input type="radio" name="starpoint" id="starpoint_2" class="star_radio" value=1>
+                                                    <input type="radio" name="starpoint" id="starpoint_3" class="star_radio" value=1.5>
+                                                    <input type="radio" name="starpoint" id="starpoint_4" class="star_radio" value=2>
+                                                    <input type="radio" name="starpoint" id="starpoint_5" class="star_radio" value=2.5>
+                                                    <input type="radio" name="starpoint" id="starpoint_6" class="star_radio" value=3>
+                                                    <input type="radio" name="starpoint" id="starpoint_7" class="star_radio" value=3.5>
+                                                    <input type="radio" name="starpoint" id="starpoint_8" class="star_radio" value=4>
+                                                    <input type="radio" name="starpoint" id="starpoint_9" class="star_radio" value=4.5>
+                                                    <input type="radio" name="starpoint" id="starpoint_10" class="star_radio" value=5>
+                                                    <span class="starpoint_bg"></span>
+                                                </div>
+                                            </div>
+
+                                    </div>
+                                    <div class="field item form-group">
+                                        <label class="col-form-label col-md-3 col-sm-3  label-align">글쓴이</label>
                                         <div class="col-md-6 col-sm-6">
-                                            <input class="form-control" name="name_eng" type="text" required="required" />
+                                            <input class="form-control" name="Arename" id="Arename" type="text" required="required" />
                                         </div>
                                     </div>
                                     <div class="field item form-group">
                                         <label class="col-form-label col-md-3 col-sm-3  label-align">리뷰 비밀번호</label>
                                         <div class="col-md-6 col-sm-6">
-                                            <input class="form-control" name="type_eng" type="text" required="required" />
+                                            <input class="form-control" name="Arepw" id="Arepw" type="password" required="required" />
                                         </div>
                                     </div>
                                     <div class="field item form-group">
                                         <label class="col-form-label col-md-3 col-sm-3  label-align">리뷰 노출여부</label>
                                         <p>
-                                            비노출 :
-                                            <input type="radio" class="flat" name="showNum" id="show0" value="0" checked="" required />  노출   :
-                                            <input type="radio" class="flat" name="showNum" id="show1" value="1" />
+                                            &nbsp;&nbsp;&nbsp;비노출&nbsp;:
+                                            <input type="radio" class="flat" name="AreshowNum" value="0" checked="" required />
+                                            &nbsp;&nbsp;&nbsp;노출&nbsp;:
+                                            <input type="radio" class="flat" name="AreshowNum" value="1" />
                                         </p>
                                     </div>
                                     <div>
-                                        <label class="col-form-label col-md-3 col-sm-3" for="case3">리뷰내용 </label>
+                                        <label class="col-form-label col-md-3 col-sm-3" for="Aretext">리뷰내용 </label>
                                         <br>
-                                        <textarea required="required" name='case3' id="case3" class="big_area"></textarea>
+                                        <textarea required="required" name='case3' id="Aretext" class="big_area"></textarea>
                                     </div>
 
                                     <div class="ln_solid">
                                         <div class="form-group">
                                             <div class="col-md-6 offset-md-3">
-                                                <button type='submit' class="btn btn-primary">Submit</button>
+                                                <button type='button' class="btn btn-primary" onclick="review_add()">Submit</button>
                                                 <button type='reset' class="btn btn-success">Reset</button>
                                             </div>
                                         </div>
@@ -113,7 +142,7 @@
 <div id="load"><img src="/admin/images/spinner.gif" alt="loading"></div>
 
 
-<script src="/admin/js/admin.js"></script>
+<script src="/admin/js/review.js"></script>
 <script src="https://code.jquery.com/jquery-latest.js"></script>
 <!-- swal창 띄우기 -->
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>

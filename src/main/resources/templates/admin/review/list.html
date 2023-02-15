@@ -31,13 +31,9 @@
                         </div>
 
                         <div class="title_right">
-                            <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
-                                <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Search for...">
-                                    <span class="input-group-btn">
-                      <button class="btn btn-secondary" type="button">Go!</button>
-                    </span>
-                                </div>
+                            <div class="pull-right">
+                                <button onclick="location.href='/admin/review/add'" type="button" class="btn btn-round btn-primary"><i class="fa fa-pencil">등록</i></button>
+                                <div class="clearfix"></div>
                             </div>
                         </div>
                     </div>
@@ -46,67 +42,56 @@
 
 
                     <div class="row">
-                        <div class="col-md-12 col-sm-12  ">
 
-
+                        <div class="col-md-12 col-sm-12" th:each="i : ${seqname}">
                             <div class="x_panel">
-
                                 <div class="x_title">
-                                    <button onclick="solution_add()" type="button" class="btn btn-round btn-primary"><i class="fa fa-pencil">등록</i></button>
+                                    <h2 th:text="${i.value}">솔루션이름</h2>
+                                    <ul class="nav navbar-right panel_toolbox">
+                                        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
+                                        <li><a class="close-link"><i class="fa fa-close"></i></a>
+                                        </li>
+                                    </ul>
                                     <div class="clearfix"></div>
                                 </div>
-
-
                                 <div class="x_content">
-                                    <div class="table-responsive">
-                                        <table class="table table-striped jambo_table bulk_action">
-                                            <thead>
-                                            <tr class="headings">
-                                                <th>#</th>
-                                                <th>별점</th>
-                                                <th>노출 여부</th>
-                                                <th>등록 날짜</th>
-                                                <th>최종 수정 날짜</th>
-                                                <th>수정</th>
-                                            </tr>
-                                            </thead>
 
-                                            <tbody>
-                                            <tr class="even pointer">
-                                                <th scope="row">0</font></th>
-                                                <td>111</td>
-                                                <td>222</td>
-                                                <td>333</td>
-                                                <td>444</td>
-                                                <td>
-                                                    <button onclick="solution_edit()" type="button" class="btn btn-info btn-sm">
-                                                        <i class="fa fa-edit">수정</i>
-                                                    </button>
-                                                </td>
-                                            </tr>
-                                            <tr class="even pointer">
-                                                <th scope="row">00</font></th>
-                                                <td>111</td>
-                                                <td>222</td>
-                                                <td>333</td>
-                                                <td>444</td>
-                                                <td>
-                                                    <button onclick="solution_edit()" type="button" class="btn btn-info btn-sm">
-                                                        <i class="fa fa-edit">수정</i>
-                                                    </button>
-                                                </td>
-                                            </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
+                                    <article th:each="Co: ${reviewlist}" th:if="${Co.API1_SEQ}==${i.key}" class="media event boxs" onclick="location.href='#'">
 
+                                        <a class="user-profile2 pull-left" aria-haspopup="true"
+                                           data-toggle="dropdown" aria-expanded="false">
+                                            <img src="/admin/images/img.jpg" alt="">
+                                        </a>
+                                        <div class="media-body">
+                                            <a class="title" th:text="${Co.AR_NAME}">글쓴이</a>
+                                            <a class="a_edit" th:onclick="review_edit([[${Co.AR_SEQ}]])">수정</a>
+                                            <a class="a_delete" th:onclick="review_delete([[${Co.AR_SEQ}]])">삭제</a>
+                                            <span th:if="${Co.AR_STATE}==0">비노출</span><span th:if="${Co.AR_STATE}==1">노출</span>
+                                            <br>
+                                                <div class="starpoint_box2">
+                                                    <span th:if="${Co.AR_STAR}==0" class="starpoint_bg" style="width:0%;">별점</span>
+                                                    <span th:if="${Co.AR_STAR}==0.5" class="starpoint_bg" style="width:10%;">별점</span>
+                                                    <span th:if="${Co.AR_STAR}==1" class="starpoint_bg" style="width:20%;">별점</span>
+                                                    <span th:if="${Co.AR_STAR}==1.5" class="starpoint_bg" style="width:30%;">별점</span>
+                                                    <span th:if="${Co.AR_STAR}==2" class="starpoint_bg" style="width:40%;">별점</span>
+                                                    <span th:if="${Co.AR_STAR}==2.5" class="starpoint_bg" style="width:50%;">별점</span>
+                                                    <span th:if="${Co.AR_STAR}==3" class="starpoint_bg" style="width:60%;">별점</span>
+                                                    <span th:if="${Co.AR_STAR}==3.5" class="starpoint_bg" style="width:70%;">별점</span>
+                                                    <span th:if="${Co.AR_STAR}==4" class="starpoint_bg" style="width:80%;">별점</span>
+                                                    <span th:if="${Co.AR_STAR}==4.5" class="starpoint_bg" style="width:90%;">별점</span>
+                                                    <span th:if="${Co.AR_STAR}==5" class="starpoint_bg" style="width:100%;">별점</span>
+                                                </div><br>
+                                            <span th:text="'등록 : '+${#strings.substring(Co.AR_IDATETIME, 0, 10)}">등록날짜</span>
+                                            <span th:text="' / 수정 : '+${#strings.substring(Co.AR_UDATETIME, 0, 10)}">최종수정날짜</span>
+                                            <br>
+                                            <div style="word-break:break-all;"><span th:text="${Co.AR_CONTENT}">리뷰내용</span></div>
+                                        </div>
+                                    </article>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
-
             </div>
             <!-- /page content -->
 
@@ -121,7 +106,7 @@
 <div id="load"><img src="/admin/images/spinner.gif" alt="loading"></div>
 
 
-<script src="/admin/js/solution.js"></script>
+<script src="/admin/js/review.js"></script>
 <script src="https://code.jquery.com/jquery-latest.js"></script>
 <!-- swal창 띄우기 -->
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>

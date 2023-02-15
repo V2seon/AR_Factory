@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>AR FACTORY</title>
     <link href="/admin/css/main.css" rel="stylesheet">
+    <link rel="stylesheet" href="/promotion/css/af_review/af_review.css">
 
     <!-- Bootstrap -->
     <link href="/admin/css/vendors/bootstrap.min.css" rel="stylesheet">
@@ -13,6 +14,18 @@
     <link href="/admin/css/vendors/nprogress.css" rel="stylesheet">
     <!-- jQuery custom content scroller -->
     <link href="/admin/css/vendors/jquery.mCustomScrollbar.min.css" rel="stylesheet"/>
+    <!-- iCheck -->
+    <link href="/admin/css/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+    <!-- bootstrap-wysiwyg -->
+    <link href="/admin/css/vendors/prettify.min.css" rel="stylesheet">
+    <!-- Select2 -->
+    <link href="/admin/css/vendors/select2.min.css" rel="stylesheet">
+    <!-- Switchery -->
+    <link href="/admin/css/vendors/switchery.min.css" rel="stylesheet">
+    <!-- starrr -->
+    <link href="/admin/css/vendors/starrr.css" rel="stylesheet">
+    <!-- bootstrap-daterangepicker -->
+    <link href="/admin/css/vendors/daterangepicker.css" rel="stylesheet">
 
     <!-- Custom Theme Style -->
     <link href="/admin/css/custom.min.css" rel="stylesheet">
@@ -21,15 +34,100 @@
 <div class="container body">
     <div class="main_container">
         <div class="main_container">
-            <div th:insert="admin/AdminNav.html"></div>
+            <div th:insert="/admin/AdminNav.html"></div>
             <!-- page content -->
             <div class="right_col" role="main">
 
+                <div class="page-title">
+                    <div class="title_left">
+                        <h3>문의 수정</h3>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="row">
+                    <div class="col-md-12 col-sm-12">
+                        <div class="x_panel">
+                            <div class="x_content">
+                                <form class="" action="" method="post" novalidate>
+                                    <div class="field item form-group">
+                                        <label class="col-form-label col-md-3 col-sm-3  label-align">패키지 선택</label>
+                                        <p th:each="Co,i: ${data}">
+                                            <span th:text="'&nbsp;&nbsp;&nbsp;'+${Co.API1_NAME}+'&nbsp;:'"> 패키지 : </span>
+                                            <input th:if="${i.count}==1"  type="radio" class="flat" name="RePackage" th:value="${Co.API1_SEQ}" th:checked="${Co.API1_SEQ}==${pac}" required />
+                                            <input th:if="${i.count}!=1"  type="radio" class="flat" name="RePackage" th:value="${Co.API1_SEQ}" th:checked="${Co.API1_SEQ}==${pac}" required />
+                                        </p>
+                                    </div>
 
-                <!-- 내용 작성-->
-                <h1>review edit</h1>
+                                    <div class="field item form-group">
+                                        <label class="col-form-label col-md-3 col-sm-3  label-align">별점</label>
 
+                                        <div class="starpoint_wrap">
+                                            <div class="starpoint_box">
+                                                <label for="starpoint_1" class="label_star"></label>
+                                                <label for="starpoint_2" class="label_star"></label>
+                                                <label for="starpoint_3" class="label_star"></label>
+                                                <label for="starpoint_4" class="label_star"></label>
+                                                <label for="starpoint_5" class="label_star"></label>
+                                                <label for="starpoint_6" class="label_star"></label>
+                                                <label for="starpoint_7" class="label_star"></label>
+                                                <label for="starpoint_8" class="label_star"></label>
+                                                <label for="starpoint_9" class="label_star"></label>
+                                                <label for="starpoint_10" class="label_star"></label>
+                                                <input type="radio" name="starpoint" id="starpoint_1" class="star_radio" th:checked="${star}==0.5" value=0.5>
+                                                <input type="radio" name="starpoint" id="starpoint_2" class="star_radio" th:checked="${star}==1" value=1>
+                                                <input type="radio" name="starpoint" id="starpoint_3" class="star_radio" th:checked="${star}==1.5" value=1.5>
+                                                <input type="radio" name="starpoint" id="starpoint_4" class="star_radio" th:checked="${star}==2" value=2>
+                                                <input type="radio" name="starpoint" id="starpoint_5" class="star_radio" th:checked="${star}==2.5" value=2.5>
+                                                <input type="radio" name="starpoint" id="starpoint_6" class="star_radio" th:checked="${star}==3" value=3>
+                                                <input type="radio" name="starpoint" id="starpoint_7" class="star_radio" th:checked="${star}==3.5" value=3.5>
+                                                <input type="radio" name="starpoint" id="starpoint_8" class="star_radio" th:checked="${star}==4" value=4>
+                                                <input type="radio" name="starpoint" id="starpoint_9" class="star_radio" th:checked="${star}==4.5" value=4.5>
+                                                <input type="radio" name="starpoint" id="starpoint_10" class="star_radio" th:checked="${star}==5" value=5>
+                                                <span class="starpoint_bg"></span>
+                                            </div>
+                                        </div>
 
+                                    </div>
+                                    <div class="field item form-group">
+                                        <label class="col-form-label col-md-3 col-sm-3  label-align">글쓴이</label>
+                                        <div class="col-md-6 col-sm-6">
+                                            <input th:value="${name}" class="form-control" name="Arename" id="Arename" type="text" required="required" />
+                                        </div>
+                                    </div>
+                                    <div class="field item form-group">
+                                        <label class="col-form-label col-md-3 col-sm-3  label-align">리뷰 비밀번호</label>
+                                        <div class="col-md-6 col-sm-6">
+                                            <input class="form-control" name="Arepw" id="Arepw" type="password" required="required" placeholder="변경하지 않을 경우 비워주세요."/>
+                                        </div>
+                                    </div>
+                                    <div class="field item form-group">
+                                        <label class="col-form-label col-md-3 col-sm-3  label-align">리뷰 노출여부</label>
+                                        <p>
+                                            &nbsp;&nbsp;&nbsp;비노출&nbsp;:
+                                            <input type="radio" class="flat" name="AreshowNum" value="0" th:checked="${state}==0" required />
+                                            &nbsp;&nbsp;&nbsp;노출&nbsp;:
+                                            <input type="radio" class="flat" name="AreshowNum" value="1" th:checked="${state}==1" />
+                                        </p>
+                                    </div>
+                                    <div>
+                                        <label class="col-form-label col-md-3 col-sm-3" for="Aretext">리뷰내용 </label>
+                                        <br>
+                                        <textarea th:value="${text}" th:text="${text}" required="required" name='case3' id="Aretext" class="big_area"></textarea>
+                                    </div>
+
+                                    <div class="ln_solid">
+                                        <div class="form-group">
+                                            <div class="col-md-6 offset-md-3">
+                                                <button type='button' class="btn btn-primary" th:onclick="review_editSave([[${seq}]])">Submit</button>
+                                                <button type='reset' class="btn btn-success">Reset</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <!-- /page content -->
 
@@ -44,7 +142,7 @@
 <div id="load"><img src="/admin/images/spinner.gif" alt="loading"></div>
 
 
-<script src="/admin/js/admin.js"></script>
+<script src="/admin/js/review.js"></script>
 <script src="https://code.jquery.com/jquery-latest.js"></script>
 <!-- swal창 띄우기 -->
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
@@ -60,6 +158,31 @@
 <script src="/admin/js/design/vendors/nprogress.js"></script>
 <!-- jQuery custom content scroller -->
 <script src="/admin/js/design/vendors/jquery.mCustomScrollbar.concat.min.js"></script>
+<!-- bootstrap-progressbar -->
+<script src="/admin/js/design/vendors/bootstrap-progressbar.min.js"></script>
+<!-- iCheck -->
+<script src="/admin/js/design/vendors/icheck.min.js"></script>
+<!-- bootstrap-daterangepicker -->
+<script src="/admin/js/design/vendors/moment.min.js"></script>
+<script src="/admin/js/design/vendors/daterangepicker.js"></script>
+<!-- bootstrap-wysiwyg -->
+<script src="/admin/js/design/vendors/bootstrap-wysiwyg.min.js"></script>
+<script src="/admin/js/design/vendors/jquery.hotkeys.js"></script>
+<script src="/admin/js/design/vendors/prettify.js"></script>
+<!-- jQuery Tags Input -->
+<script src="/admin/js/design/vendors/jquery.tagsinput.js"></script>
+<!-- Switchery -->
+<script src="/admin/js/design/vendors/switchery.min.js"></script>
+<!-- Select2 -->
+<script src="/admin/js/design/vendors/select2.full.min.js"></script>
+<!-- Parsley -->
+<script src="/admin/js/design/vendors/parsley.min.js"></script>
+<!-- Autosize -->
+<script src="/admin/js/design/vendors/autosize.min.js"></script>
+<!-- jQuery autocomplete -->
+<script src="/admin/js/design/vendors/jquery.autocomplete.min.js"></script>
+<!-- starrr -->
+<script src="/admin/js/design/vendors/starrr.js"></script>
 
 <!-- Custom Theme Scripts -->
 <script src="/admin/js/design/custom.min.js"></script>

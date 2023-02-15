@@ -4,6 +4,7 @@ import com.elfe.arfactory.admin.common.SessionCheck;
 import com.elfe.arfactory.admin.entity.UserEntity;
 import com.elfe.arfactory.admin.repository.UserRepository;
 import com.elfe.arfactory.admin.service.API1Service;
+import com.elfe.arfactory.common.Pagination;
 import com.elfe.arfactory.promotion.dto.Af_project_info_1Dto;
 import com.elfe.arfactory.promotion.entity.Af_project_info_1Entity;
 import com.elfe.arfactory.promotion.repository.Af_project_info_1Repository;
@@ -31,9 +32,9 @@ import java.util.Optional;
 @RequestMapping("/admin/solution")
 public class ASolutionController {
 
-    private API1Service api1Service;
     private UserRepository userRepository;
-    private Af_project_info_1Repository Api1Repository;
+    private Af_project_info_1Repository api1Repository;
+    private API1Service api1Service;
     private final Logger log = LoggerFactory.getLogger(this.getClass().getSimpleName()); // log찍기용
 
     @GetMapping("/list")
@@ -45,7 +46,7 @@ public class ASolutionController {
             Optional<UserEntity> s1 = userRepository.findByAaid((String) session.getAttribute("userid"));
             pageable = PageRequest.of(page, 10, Sort.by("API1_SEQ").descending());
             Page<Af_project_info_1Entity> api1Entities = api1Service.getAPI1List(pageable);
-            com.elfe.arfactory.common.Pagination pagination = new com.elfe.arfactory.common.Pagination(api1Entities.getTotalPages(), page);
+            Pagination pagination = new Pagination(api1Entities.getTotalPages(), page);
 
             m.addAttribute("thisPage", pagination.getPage()); //현재 몇 페이지에 있는지 확인하기 위함
             m.addAttribute("isNextSection", pagination.isNextSection()); //다음버튼 유무 확인하기 위함
@@ -94,10 +95,10 @@ public class ASolutionController {
         LocalDateTime sdf = LocalDateTime.now();
         Af_project_info_1Dto api1Dto = new Af_project_info_1Dto(null, name, type, name_e, type_e, googleLink, appleLink, mainNum, show, sdf, sdf);
         api1Service.api1Save(api1Dto);
-        log.info(String.valueOf(Api1Repository.checkAPI1Data(name)));
+        log.info(String.valueOf(api1Repository.checkAPI1Data(name)));
 
         HashMap<String, String> msg = new HashMap<String, String>();
-        if(Api1Repository.checkAPI1Data(name)==1){
+        if(api1Repository.checkAPI1Data(name)==1){
             msg.put("save", "1");
         }else {
             msg.put("save", "0");
@@ -110,7 +111,7 @@ public class ASolutionController {
     public String solutionEdit(Model m, HttpServletRequest request, @RequestParam(required = false, defaultValue = "", value = "no") Long no) {
         String returnValue = "";
         if(new SessionCheck().loginSessionCheck(request)){
-            Af_project_info_1Entity api1Entity = Api1Repository.getAPI1Data(no);
+            Af_project_info_1Entity api1Entity = api1Repository.getAPI1Data(no);
 
             m.addAttribute("seq", api1Entity.getAPI1_SEQ());
             m.addAttribute("name", api1Entity.getAPI1_NAME());
@@ -144,12 +145,12 @@ public class ASolutionController {
                                                    @RequestParam(required = false, defaultValue = "", value = "appleLink") String appleLink,
                                                    @RequestParam(required = false, defaultValue = "", value = "mainNum") int mainNum,
                                                    @RequestParam(required = false, defaultValue = "", value = "show") int show) {
-        Af_project_info_1Entity api1Ett1 = Api1Repository.getAPI1Data(no);
+        Af_project_info_1Entity api1Ett1 = api1Repository.getAPI1Data(no);
         String timecheck = String.valueOf(api1Ett1.getAPI1_UDATETIME());
 
         LocalDateTime sdf = LocalDateTime.now();
-        Api1Repository.updateAPI1Data(no, name, type, name_e, type_e, googleLink, appleLink, mainNum, show, sdf);
-        Af_project_info_1Entity api1Ett2 = Api1Repository.getAPI1Data(no);
+        api1Repository.updateAPI1Data(no, name, type, name_e, type_e, googleLink, appleLink, mainNum, show, sdf);
+        Af_project_info_1Entity api1Ett2 = api1Repository.getAPI1Data(no);
 
         HashMap<String, String> msg = new HashMap<String, String>();
         log.info(String.valueOf(sdf));
@@ -167,10 +168,10 @@ public class ASolutionController {
     @RequestMapping(method = RequestMethod.GET, value = "/delete")
     public HashMap<String, String> solutionDeleteData(Model m, HttpServletRequest request,
                                                     @RequestParam(required = false, defaultValue = "", value = "no") Long no) {
-        Api1Repository.deleteAPI1Data(no);
+        api1Repository.deleteAPI1Data(no);
 
         HashMap<String, String> msg = new HashMap<String, String>();
-        if(Api1Repository.checkAPI1Seq(no)==0){
+        if(api1Repository.checkAPI1Seq(no)==0){
             msg.put("save", "1");
         }else {
             msg.put("save", "0");

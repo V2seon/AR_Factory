@@ -1,55 +1,189 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>AR FACTORY</title>
+    <link href="/admin/css/main.css" rel="stylesheet">
+    <link rel="stylesheet" href="/promotion/css/af_review/af_review.css">
 
-<div class="x_panel">
-    <div class="x_content">
+    <!-- Bootstrap -->
+    <link href="/admin/css/vendors/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="/admin/css/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="/admin/css/vendors/nprogress.css" rel="stylesheet">
+    <!-- jQuery custom content scroller -->
+    <link href="/admin/css/vendors/jquery.mCustomScrollbar.min.css" rel="stylesheet"/>
+    <!-- iCheck -->
+    <link href="/admin/css/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+    <!-- bootstrap-wysiwyg -->
+    <link href="/admin/css/vendors/prettify.min.css" rel="stylesheet">
+    <!-- Select2 -->
+    <link href="/admin/css/vendors/select2.min.css" rel="stylesheet">
+    <!-- Switchery -->
+    <link href="/admin/css/vendors/switchery.min.css" rel="stylesheet">
+    <!-- starrr -->
+    <link href="/admin/css/vendors/starrr.css" rel="stylesheet">
+    <!-- bootstrap-daterangepicker -->
+    <link href="/admin/css/vendors/daterangepicker.css" rel="stylesheet">
 
-        <!-- start form for validation -->
-        <form id="demo-form" data-parsley-validate>
-            <label for="name_kor">패키지 이름 :</label>
-            <input type="text" id="name_kor" class="form-control" name="name_kor" required />
-            <br>
-            <label for="type_kor">패키지 타입 :</label>
-            <input type="text" id="type_kor" class="form-control" name="type_kor" required />
-            <br>
+    <!-- Custom Theme Style -->
+    <link href="/admin/css/custom.min.css" rel="stylesheet">
+</head>
+<body class="nav-md">
+<div class="container body">
+    <div class="main_container">
+        <div class="main_container">
+            <div th:insert="/admin/AdminNav.html"></div>
+            <!-- page content -->
+            <div class="right_col" role="main">
 
-            <label for="name_eng">영문 패키지 이름 :</label>
-            <input type="text" id="name_eng" class="form-control" name="name_eng" required />
-            <br>
-            <label for="type_eng">영문 패키지 타입 :</label>
-            <input type="text" id="type_eng" class="form-control" name="type_eng" required />
-            <br>
+                <div class="page-title">
+                    <div class="title_left">
+                        <h3>후기 수정</h3>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="row">
+                    <div class="col-md-12 col-sm-12">
+                        <div class="x_panel">
+                            <div class="x_content">
+                                <form class="" action="" method="post" novalidate>
+                                    <div class="field item form-group">
+                                        <label class="col-form-label col-md-3 col-sm-3  label-align">패키지 선택</label>
+                                        <p th:each="Co,i: ${data}">
+                                            <span th:text="'&nbsp;&nbsp;&nbsp;'+${Co.API1_NAME}+'&nbsp;:'"> 패키지 : </span>
+                                            <input th:if="${i.count}==1"  type="radio" class="flat" name="RePackage" th:value="${Co.API1_SEQ}" th:checked="${Co.API1_SEQ}==${pac}" required />
+                                            <input th:if="${i.count}!=1"  type="radio" class="flat" name="RePackage" th:value="${Co.API1_SEQ}" th:checked="${Co.API1_SEQ}==${pac}" required />
+                                        </p>
+                                    </div>
 
-            <label for="googleLink">구글 스토어 링크 :</label>
-            <input type="text" id="googleLink" class="form-control" name="googleLink" required />
-            <br>
-            <label for="appleLink">애플 앱스토어 링크 :</label>
-            <input type="text" id="appleLink" class="form-control" name="appleLink" required />
-            <br>
-            <label for="mainNum">메인 페이지 솔루션 순서 :</label>
-            <input type="text" id="mainNum" class="form-control" name="mainNum" required />
-            <br>
+                                    <div class="field item form-group">
+                                        <label class="col-form-label col-md-3 col-sm-3  label-align">문의고객</label>
+                                        <div class="col-md-6 col-sm-6">
+                                            <input th:value="${name}" class="form-control" name="Arename" id="Arename" type="text" required="required" />
+                                        </div>
+                                    </div>
+                                    <div class="field item form-group">
+                                        <label class="col-form-label col-md-3 col-sm-3  label-align">전화번호</label>
+                                        <div class="col-md-6 col-sm-6">
+                                            <input class="form-control" name="Arepw" id="Arepw" type="password" required="required" placeholder="변경하지 않을 경우 비워주세요."/>
+                                        </div>
+                                    </div>
+                                    <div class="field item form-group">
+                                        <label class="col-form-label col-md-3 col-sm-3  label-align">문의 상태</label>
+                                        <p>
+                                            &nbsp;&nbsp;&nbsp;문의&nbsp;:
+                                            <input type="radio" class="flat" name="AreshowNum" value="0" th:checked="${state}==0" required />
+                                            &nbsp;&nbsp;&nbsp;문의중&nbsp;:
+                                            <input type="radio" class="flat" name="AreshowNum" value="1" th:checked="${state}==1" />
+                                            &nbsp;&nbsp;&nbsp;문의완료&nbsp;:
+                                            <input type="radio" class="flat" name="AreshowNum" value="2" th:checked="${state}==1" />
+                                        </p>
+                                    </div>
+                                    <div class="field item form-group">
+                                        <label class="col-form-label col-md-3 col-sm-3  label-align">문의 상태</label>
+                                        <p>
+                                            &nbsp;&nbsp;&nbsp;미결제&nbsp;:
+                                            <input type="radio" class="flat" name="AreshowNum" value="0" th:checked="${state}==0" required />
+                                            &nbsp;&nbsp;&nbsp;결제완료&nbsp;:
+                                            <input type="radio" class="flat" name="AreshowNum" value="1" th:checked="${state}==1" />
+                                        </p>
+                                    </div>
+                                    <div class="field item form-group">
+                                        <label class="col-form-label col-md-3 col-sm-3  label-align">선택한 옵션</label>
+                                        <!--&lt;!&ndash;                                        <p th:each="Opt,i: ${optdata}">&ndash;&gt; <p>-->
+                                        <!--&lt;!&ndash;                                        <span th:text="'&nbsp;&nbsp;&nbsp;'+${Opt.API6_OPT1}+'&nbsp;:'"> 옵션 : </span>&ndash;&gt; <span> 옵션 : </span>-->
+                                        <!--                                            <input th:if="${i.count}==1"  type="radio" class="flat" name="RePackage" th:value="${Co.API1_SEQ}" th:checked="${Co.API1_SEQ}==${pac}" required />-->
+                                        <!--                                            <input th:if="${i.count}!=1"  type="radio" class="flat" name="RePackage" th:value="${Co.API1_SEQ}" th:checked="${Co.API1_SEQ}==${pac}" required />-->
+                                        <!--                                        -->
 
-            <label>노출여부 *:</label>
-            <p>
-                비노출 :
-                <input type="radio" class="flat" name="showNum" id="show0" value="0" checked="" required />
-                <br>
-                노출 :
-                <input type="radio" class="flat" name="showNum" id="show1" value="1" />
-            </p>
+                                        <!--                                        <p style="padding: 5px;">-->
+                                        <!--                                            <input type="checkbox" name="hobbies[]" id="hobby1" value="ski" data-parsley-mincheck="2" required class="flat" /> Skiing-->
+                                        <!--                                            <br />-->
 
-            <br />
+                                        <!--                                            <input type="checkbox" name="hobbies[]" id="hobby2" value="run" class="flat" /> Running-->
+                                        <!--                                            <br />-->
 
-            <div class="ln_solid">
-                <div class="form-group">
-                    <div class="col-md-6 offset-md-3">
-                        <button type='submit' class="btn btn-primary">Submit</button>
-                        <button type='reset' class="btn btn-success">Reset</button>
+                                        <!--                                            <input type="checkbox" name="hobbies[]" id="hobby3" value="eat" class="flat" /> Eating-->
+                                        <!--                                            <br />-->
+
+                                        <!--                                            <input type="checkbox" name="hobbies[]" id="hobby4" value="sleep" class="flat" /> Sleeping-->
+                                        <!--                                            <br />-->
+                                        <!--                                    </p>-->
+                                        <!--                                        </p>-->
+                                    </div>
+
+                                    <div class="ln_solid">
+                                        <div class="form-group">
+                                            <div class="col-md-6 offset-md-3">
+                                                <button type='button' class="btn btn-primary" th:onclick="review_editSave([[${seq}]])">Submit</button>
+                                                <button type='reset' class="btn btn-success">Reset</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
+            <!-- /page content -->
 
-        </form>
-        <!-- end form for validations -->
-
+            <!-- footer content -->
+            <footer>
+                <div class="clearfix"></div>
+            </footer>
+            <!-- /footer content -->
+        </div>
     </div>
 </div>
+<div id="load"><img src="/admin/images/spinner.gif" alt="loading"></div>
+
+
+<script src="/admin/js/inq.js"></script>
+<script src="https://code.jquery.com/jquery-latest.js"></script>
+<!-- swal창 띄우기 -->
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+
+<!-- jQuery -->
+<script src="/admin/js/design/vendors/jquery.min.js"></script>
+<!-- Bootstrap -->
+<script src="/admin/js/design/vendors/bootstrap.bundle.min.js"></script>
+<!-- FastClick -->
+<script src="/admin/js/design/vendors/fastclick.js"></script>
+<!-- NProgress -->
+<script src="/admin/js/design/vendors/nprogress.js"></script>
+<!-- jQuery custom content scroller -->
+<script src="/admin/js/design/vendors/jquery.mCustomScrollbar.concat.min.js"></script>
+<!-- bootstrap-progressbar -->
+<script src="/admin/js/design/vendors/bootstrap-progressbar.min.js"></script>
+<!-- iCheck -->
+<script src="/admin/js/design/vendors/icheck.min.js"></script>
+<!-- bootstrap-daterangepicker -->
+<script src="/admin/js/design/vendors/moment.min.js"></script>
+<script src="/admin/js/design/vendors/daterangepicker.js"></script>
+<!-- bootstrap-wysiwyg -->
+<script src="/admin/js/design/vendors/bootstrap-wysiwyg.min.js"></script>
+<script src="/admin/js/design/vendors/jquery.hotkeys.js"></script>
+<script src="/admin/js/design/vendors/prettify.js"></script>
+<!-- jQuery Tags Input -->
+<script src="/admin/js/design/vendors/jquery.tagsinput.js"></script>
+<!-- Switchery -->
+<script src="/admin/js/design/vendors/switchery.min.js"></script>
+<!-- Select2 -->
+<script src="/admin/js/design/vendors/select2.full.min.js"></script>
+<!-- Parsley -->
+<script src="/admin/js/design/vendors/parsley.min.js"></script>
+<!-- Autosize -->
+<script src="/admin/js/design/vendors/autosize.min.js"></script>
+<!-- jQuery autocomplete -->
+<script src="/admin/js/design/vendors/jquery.autocomplete.min.js"></script>
+<!-- starrr -->
+<script src="/admin/js/design/vendors/starrr.js"></script>
+
+<!-- Custom Theme Scripts -->
+<script src="/admin/js/design/custom.min.js"></script>
+</body>
+</html>

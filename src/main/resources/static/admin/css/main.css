@@ -33,3 +33,52 @@ table.color_table thead{
     padding: 10px;
 }
 
+article.boxs{
+    border-bottom: 1px solid #E6E9ED;
+    margin-bottom: 10px;
+    padding: 1px 5px 6px;
+    display:inline-table;
+}
+
+a.a_edit{
+    background-color: #0001ff20;
+    cursor:pointer;
+}
+
+a.a_delete{
+    background-color: #ff000020;
+    cursor:pointer;
+}
+
+.radios{
+    margin-right: 10px;
+}
+
+.starpoint_box2{
+    position:relative;
+    background:url(https://ido-archive.github.io/svc/etc/element/img/sp_star.png) 0 0 no-repeat;
+    font-size:0;
+    width:100px;
+}
+.starpoint_box2 .starpoint_bg{
+    display:block;
+    position:absolute;
+    top:0;
+    left:60px;
+    margin:1px,1px;
+    height:18px;
+    background:url(https://ido-archive.github.io/svc/etc/element/img/sp_star.png) 0 -20px no-repeat;
+    pointer-events:none;
+}
+
+a.user-profile2{
+    color:#5E6974 !important
+}
+.user-profile2 img{
+    width:50px;
+    height:50px;
+    border-radius:50%;
+    margin-right:10px;
+}
+
+

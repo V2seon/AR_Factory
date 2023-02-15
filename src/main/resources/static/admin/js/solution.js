@@ -85,7 +85,6 @@ function solution_add(){
 
 // 솔루션 수정
 function solution_edit(api1_seq){
-    console.log(api1_seq);
     swal({
         title : "수정하시겠습니까?",
         icon : "info",
