@@ -62,6 +62,12 @@ public class MainController {
             avg = avg/listcount.size();
 
             ad.put("seq",viewconlist.get(i).getAPI1_SEQ());
+            ad.put("img1",af_2Entity.get().getAPI2_IMG1());
+            ad.put("img2",af_2Entity.get().getAPI2_IMG2());
+            ad.put("img3",af_2Entity.get().getAPI2_IMG3());
+            ad.put("img4",af_2Entity.get().getAPI2_IMG4());
+            ad.put("img5",af_2Entity.get().getAPI2_IMG5());
+            ad.put("img6",af_2Entity.get().getAPI2_IMG6());
             ad.put("data",af_2Entity.get().getAPI2_CONTENTS());
             ad.put("size",listcount.size());
             ad.put("viewre",viewre);

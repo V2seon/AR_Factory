@@ -22,11 +22,24 @@
     <div class="subbox1">
         <div class="swiper">
             <div class="swiper-wrapper">
-                <div class="swiper-slide">Slide 1</div>
-                <div class="swiper-slide">Slide 2</div>
-                <div class="swiper-slide">Slide 3</div>
-                <div class="swiper-slide">Slide 4</div>
-                <div class="swiper-slide">Slide 5</div>
+                <div class="swiper-slide" th:if="${Co.get('img1')} != ''">
+                    <img th:src="${Co.get('img1')}">
+                </div>
+                <div class="swiper-slide" th:if="${Co.get('img2')} != ''">
+                    <img th:src="${Co.get('img2')}">
+                </div>
+                <div class="swiper-slide" th:if="${Co.get('img3')} != ''">
+                    <img th:src="${Co.get('img3')}">
+                </div>
+                <div class="swiper-slide" th:if="${Co.get('img4')} != ''">
+                    <img th:src="${Co.get('img4')}">
+                </div>
+                <div class="swiper-slide" th:if="${Co.get('img5')} != ''">
+                    <img th:src="${Co.get('img5')}">
+                </div>
+                <div class="swiper-slide" th:if="${Co.get('img6')} != ''">
+                    <img th:src="${Co.get('img6')}">
+                </div>
             </div>
             <div class="swiper-pagination"></div>
         </div>
@@ -111,11 +124,8 @@
     <span th:text="${Co.get('seq')}" id="pjnum" hidden ></span>
 </div>
 
-<link
-        rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"
-/>
-
+<!-- 슬라이드 -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"/>
 <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
 
 <script src="https://code.jquery.com/jquery-latest.js"></script>

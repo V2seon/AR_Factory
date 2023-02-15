@@ -47,7 +47,7 @@ public class Af_reviewController {
     public String Af_review(Model m, HttpServletRequest request){
         HttpSession session = request.getSession();
         m.addAttribute("pjnum",session.getAttribute("pjnum"));
-        return "/promotion/Af_review1";
+        return "/promotion/Af_review";
     }
 
     @ResponseBody
