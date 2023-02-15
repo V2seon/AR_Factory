@@ -17,9 +17,6 @@ $.ajax({
 function viewcon(num, pjnum){
 
 const lagse = document.getElementById('lagse');
-
-console.log(pjnum);
-
 let sendData = {
             "pjnum" : pjnum,
             "datanum" : num,

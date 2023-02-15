@@ -6,40 +6,30 @@
     <link rel="stylesheet" href="/promotion/css/main.css">
     <link rel="stylesheet" href="/promotion/css/test.css">
 
+    <!--google material icon 사용
+    class="material-icons"-->
+    <link rel="stylesheet" href="http://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <!-- main.css 연결 -->
+    <link rel="stylesheet" href="/promotion/css/main.css">
+    <!-- main.js 연결 -->
+    <script defer src="/promotion/js/main/slide.js"></script>
+
 </head>
 <body>
 <div th:insert="/promotion/nav/navbar.html"></div>
 <div class="mainbox" th:each="Co : ${view}">
     <div class="subbox1">
-<!--        <div class="reviewcon" id="container">-->
-<!--            <div class="slide_wrap">-->
-<!--                <div class="slide_box">-->
-<!--                    <div class="slide_list clearfix">-->
-<!--                        <div class="slide_content slide01">-->
-<!--                            <p>1</p>-->
-<!--                        </div>-->
-<!--                        <div class="slide_content slide02">-->
-<!--                            <p>2</p>-->
-<!--                        </div>-->
-<!--                        <div class="slide_content slide03">-->
-<!--                            <p>3</p>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                    &lt;!&ndash; // .slide_list &ndash;&gt;-->
-<!--                </div>-->
-<!--                <ul class="slide_pagination"></ul>-->
-
-<!--                &lt;!&ndash; // .slide_box &ndash;&gt;-->
-<!--                <div class="slide_btn_box" hidden>-->
-<!--                    <button type="button" class="slide_btn_prev">Prev</button>-->
-<!--                    <button type="button" class="slide_btn_next">Next</button>-->
-<!--                </div>-->
-<!--                &lt;!&ndash; // .slide_btn_box &ndash;&gt;-->
-
-<!--                &lt;!&ndash; // .slide_pagination &ndash;&gt;-->
-<!--            </div>-->
-<!--            &lt;!&ndash; // .slide_wrap &ndash;&gt;-->
-<!--        </div>-->
+        <div class="swiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">Slide 1</div>
+                <div class="swiper-slide">Slide 2</div>
+                <div class="swiper-slide">Slide 3</div>
+                <div class="swiper-slide">Slide 4</div>
+                <div class="swiper-slide">Slide 5</div>
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
         <div class="reviewbox">
             <div>
                 <span id="api1_name"></span>
@@ -47,10 +37,10 @@
             <div>
                 <span id="api1_type"></span>
             </div>
-            <div><button onclick="af_review()">후기작성</button></div>
+            <div><button th:onclick="|javascript:af_review(${Co.get('seq')})|">후기작성</button></div>
             <div>
-                <span th:text="'후기 ☆ '+ ${Co.get('avg')}" id="ar_star_t"></span>
-                <span th:text="'( '+${Co.get('size')+'점 '+' )'}"></span>
+                <span th:text="'후기 ☆ '+ ${Co.get('avg')+' 점'}" id="ar_star_t"></span>
+                <span th:text="'( '+${Co.get('size')+' )'}"></span>
             </div>
             <div th:each="Co1 : ${Co.get('viewre')}">
                 <span th:text="${Co1.AR_NAME}" id="ar_name"></span>
@@ -69,8 +59,7 @@
             </div>
             <div class="databox" id="databox1">
                 <span>콘텐츠 소개</span>
-                <div id="api2_con">
-                    <!--th:text="${data.get().getAPI2_CONTENTS()}"-->
+                <div id="api2_con" th:text="${Co.get('data')}">
                 </div>
             </div>
             <div class="databox" id="databox2" style="display:none;">
@@ -115,16 +104,22 @@
                 </div>
             </div>
             <div>
-                <button th:onclick="af_inq(${Co.get('seq')})">구입문의</button>
-                <span th:text="${Co.get('seq')}" id="pjnum" hidden ></span>
+                <button th:onclick="|javascript:af_inq(${Co.get('seq')})|">구입문의</button>
             </div>
         </div>
     </div>
+    <span th:text="${Co.get('seq')}" id="pjnum" hidden ></span>
 </div>
+
+<link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"
+/>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
 
 <script src="https://code.jquery.com/jquery-latest.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-<script src="/promotion/js/main/test.js/"></script>
 <script src="/promotion/js/main/main.js"></script>
 </body>
 </html>

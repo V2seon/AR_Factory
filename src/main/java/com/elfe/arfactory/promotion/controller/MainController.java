@@ -31,6 +31,13 @@ public class MainController {
     private Af_project_info_6_eRepository af_project_info_6_eRepository;
     private Af_reviewRepository af_reviewRepository;
 
+
+    @GetMapping("/ttt")
+    public String ttt(){
+        return "/promotion/test";
+    }
+
+
     @GetMapping("/")
     public String main(Model m, HttpServletRequest request){
 
@@ -55,7 +62,7 @@ public class MainController {
             avg = avg/listcount.size();
 
             ad.put("seq",viewconlist.get(i).getAPI1_SEQ());
-//            ad.put("data",af_2Entity.get().getAPI2_CONTENTS());
+            ad.put("data",af_2Entity.get().getAPI2_CONTENTS());
             ad.put("size",listcount.size());
             ad.put("viewre",viewre);
             ad.put("avg",String.format("%.1f",avg));

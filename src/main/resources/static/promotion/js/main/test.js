@@ -1,4 +1,9 @@
+
+const boxlen = document.getElementsByClassName('mainbox').length;
+
 (function () {
+//      console.log(document.getElementsByClassName('mainbox')[0]);
+
       const slideList = document.querySelector('.slide_list');  // Slide parent dom
       const slideContents = document.querySelectorAll('.slide_content');  // each slide dom
       const slideBtnNext = document.querySelector('.slide_btn_next'); // next button

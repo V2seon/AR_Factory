@@ -1,43 +1,43 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
   <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Slide Project</title>
-  <link rel="stylesheet" href="/promotion/css/test.css">
-  <script src="/promotion/js/main/test.js/"></script>
+  <title>Document</title>
+  <!--css 초기화-->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
+
+  <!-- SWIPER 외부 라이브러리 연결-->
+  <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
+  <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+
+  <!--google material icon 사용
+  class="material-icons"-->
+  <link rel="stylesheet" href="http://fonts.googleapis.com/icon?family=Material+Icons">
+
+  <!-- main.css 연결 -->
+  <link rel="stylesheet" href="/promotion/css/main.css">
+  <!-- main.js 연결 -->
+  <script defer src="/promotion/js/main/slide.js"></script>
 </head>
+
 <body>
-<div id="container">
-  <div class="slide_wrap">
-    <div class="slide_box">
-      <div class="slide_list clearfix">
-        <div class="slide_content slide01">
-          <video src="/img/vedio1.mp4" ></video>
-        </div>
-        <div class="slide_content slide02">
-          <p>2</p>
-        </div>
-        <div class="slide_content slide03">
-          <p>3</p>
-        </div>
-      </div>
-      <!-- // .slide_list -->
-    </div>
-    <!-- // .slide_box -->
-    <div class="slide_btn_box">
-      <button type="button" class="slide_btn_prev">Prev</button>
-      <button type="button" class="slide_btn_next">Next</button>
-    </div>
-    <!-- // .slide_btn_box -->
-    <ul class="slide_pagination"></ul>
-    <!-- // .slide_pagination -->
+
+<div class="swiper">
+  <div class="swiper-wrapper">
+    <div class="swiper-slide">Slide 1</div>
+    <div class="swiper-slide">Slide 2</div>
+    <div class="swiper-slide">Slide 3</div>
+    <div class="swiper-slide">Slide 4</div>
+    <div class="swiper-slide">Slide 5</div>
   </div>
-  <!-- // .slide_wrap -->
+  <div class="swiper-pagination"></div>
+
 </div>
-<!-- // .container -->
 
 
 </body>
+
 </html>

@@ -15,6 +15,7 @@ import java.util.List;
 
 public interface Af_project_info_1Repository extends JpaRepository<Af_project_info_1Entity, Long> {
 
+    // promotion
     @Query(value = "SELECT * FROM AF_PROJECT_INFO_1 where API1_STATE =:num" , nativeQuery = true)
     List <Af_project_info_1Entity> findAll(Long num);
 
