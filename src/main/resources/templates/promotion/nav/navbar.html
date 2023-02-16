@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title></title>
@@ -17,12 +17,22 @@
         <div class="navt">SPORTS</div>
         <div class="navt">ANIMAL</div>
         <div class="navt">
-            <select id="lagse">
-                <option>KOR</option>
-                <option>ENG</option>
+            <select id="lagse" onchange="langeview()">
+                <option th:selected="${view[0].lang == 'KOR'}">KOR</option>
+                <option th:selected="${view[0].lang == 'ENG'}">ENG</option>
             </select>
         </div>
     </div>
 </div>
 </body>
+<script>
+    function langeview(){
+    const lagse = document.getElementById('lagse');
+    if(lagse.options[lagse.selectedIndex].text == "KOR"){
+        location.href="/";
+    }else if(lagse.options[lagse.selectedIndex].text == "ENG"){
+        location.href="/Eng_Af";
+    }
+    }
+</script>
 </html>

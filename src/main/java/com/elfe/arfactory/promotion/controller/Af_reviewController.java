@@ -34,21 +34,21 @@ public class Af_reviewController {
 
     private Af_reviewService af_reviewService;
 
-    @GetMapping("/Af_review_go")
-    public String Af_review_go(Model m, HttpServletRequest request,
-                            @RequestParam(required = false, defaultValue = "", value = "pjnum")String pjnum){
-        HttpSession session = request.getSession();
-        session.setAttribute("pjnum",pjnum);
-        System.out.println(pjnum);
-        return "redirect:";
-    }
-
-    @GetMapping("/Af_review")
-    public String Af_review(Model m, HttpServletRequest request){
-        HttpSession session = request.getSession();
-        m.addAttribute("pjnum",session.getAttribute("pjnum"));
-        return "/promotion/Af_review";
-    }
+//    @GetMapping("/Af_review_go")
+//    public String Af_review_go(Model m, HttpServletRequest request,
+//                            @RequestParam(required = false, defaultValue = "", value = "pjnum")String pjnum){
+//        HttpSession session = request.getSession();
+//        session.setAttribute("pjnum",pjnum);
+//        System.out.println(pjnum);
+//        return "redirect:";
+//    }
+//
+//    @GetMapping("/Af_review")
+//    public String Af_review(Model m, HttpServletRequest request){
+//        HttpSession session = request.getSession();
+//        m.addAttribute("pjnum",session.getAttribute("pjnum"));
+//        return "/promotion/Af_review";
+//    }
 
     @ResponseBody
     @RequestMapping(method = RequestMethod.POST, value = "/In_Af_review")
