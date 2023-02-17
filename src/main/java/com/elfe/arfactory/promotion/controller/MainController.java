@@ -88,7 +88,6 @@ public class MainController {
 
     @GetMapping("/Eng_Af")
     public String engmain(Model m, HttpServletRequest request){
-
         List<Af_project_info_1Entity> viewconlist = af_project_info_1Repository.findAll(1L);
         List view = new ArrayList<>();
         for(int i=0; i<viewconlist.size(); i++){

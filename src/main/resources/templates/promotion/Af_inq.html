@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="/promotion/css/conview/conview.css">
 </head>
 <body>
-<div th:insert="/promotion/nav/navbar.html"></div>
+<div th:insert="/promotion/nav/navbar1.html"></div>
 <div class="mbox">
     <div class="maintext">문의하기</div>
 </div>
@@ -15,7 +15,7 @@
     <span th:text="${pjnum}" id="pjnum" hidden ></span>
     <div class="t1">* 항목은 필수 입력 사항</div>
     <div class="t2">
-        <div style="text-align:left;">문의유형*</div>
+        <div id="t3" style="text-align:left;">문의유형*</div>
         <div>
             <label for="chk">
                 <input name="typechoice" type="radio" id="chk" value="구매 문의">

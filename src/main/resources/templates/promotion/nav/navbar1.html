@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="/promotion/css/nav/nav.css">
+</head>
+<body>
+<div class="hide">
+    <div class="hide1">
+        <img src="/promotion/img/logo.jpg" style="float:left;">
+    </div>
+    <div class="hide2">
+        <div class="navt">AR</div>
+        <div class="navt">AI</div>
+        <div class="navt">GAME</div>
+        <div class="navt">SPORTS</div>
+        <div class="navt">ANIMAL</div>
+        <div class="navt">
+            <select id="lagse" onchange="langeview()">
+                <option th:selected="${lagse == 'KOR'}">KOR</option>
+                <option th:selected="${lagse == 'ENG'}">ENG</option>
+            </select>
+        </div>
+    </div>
+</div>
+</body>
+<script>
+function langeview(){
+const lagse = document.getElementById('lagse');
+const pjnum = document.getElementById('pjnum').innerText;
+console.log(pjnum);
+let sendData = {
+    "pjnum" : pjnum,
+    "lagse" : lagse.options[lagse.selectedIndex].text
+}
+$.ajax({
+            url      : "/Af_inq_go",
+            data     : sendData,
+            type     : "GET",
+            success : function(result) {
+                location.href=("/Af_inq");
+            },
+            error:function(request,status,error){
+            }
+        });
+}
+</script>
+</html>

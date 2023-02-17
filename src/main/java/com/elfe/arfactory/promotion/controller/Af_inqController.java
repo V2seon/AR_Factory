@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.HashMap;
 
 @Controller
 @AllArgsConstructor
@@ -18,18 +19,28 @@ public class Af_inqController {
 
     @GetMapping("/Af_inq_go")
     public String Af_inq_go(Model m, HttpServletRequest request,
-                           @RequestParam(required = false, defaultValue = "", value = "pjnum")String pjnum){
+                           @RequestParam(required = false, defaultValue = "", value = "pjnum")String pjnum,
+                            @RequestParam(required = false, defaultValue = "", value = "lagse")String lagse){
         HttpSession session = request.getSession();
         session.setAttribute("pjnum",pjnum);
-        System.out.println(pjnum);
+        session.setAttribute("lagse",lagse);
         return "redirect:";
     }
 
     @GetMapping("/Af_inq")
     public String Af_inq(Model m, HttpServletRequest request){
+        String returnValue = "";
         HttpSession session = request.getSession();
         m.addAttribute("pjnum",session.getAttribute("pjnum"));
-        return "/promotion/Af_inq";
+        String lagse = (String) session.getAttribute("lagse");
+        if(lagse.equals("KOR")){
+            returnValue= "/promotion/Af_inq";
+            m.addAttribute("lagse","KOR");
+        }else if(lagse.equals("ENG")){
+            returnValue= "/promotion/eng/Af_inq";
+            m.addAttribute("lagse","ENG");
+        }
+        return returnValue;
     }
 
     @ResponseBody

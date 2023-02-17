@@ -1,6 +1,8 @@
-function af_inq(){
+function af_inq(pjnum){
+const lagse = document.getElementById('lagse');
 let sendData = {
-    "pjnum" : pjnum
+    "pjnum" : pjnum,
+    "lagse" : lagse.options[lagse.selectedIndex].text
 }
 $.ajax({
             url      : "/Af_inq_go",
