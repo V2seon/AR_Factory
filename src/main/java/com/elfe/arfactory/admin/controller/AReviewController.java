@@ -70,8 +70,6 @@ public class AReviewController {
             m.addAttribute("reviewlist", afReviewEntities); //페이지 객체 리스트
             m.addAttribute("seqname", seqname); //페이지 객체 리스트
 
-            m.addAttribute("Lang", "kor");
-//            m.addAttribute("Lang", "eng");
             returnValue = "/admin/review/list.html";
         }else {
             returnValue = "redirect:/admin";
@@ -87,8 +85,6 @@ public class AReviewController {
             List <Af_project_info_1Entity> getdata = api1Repository.getAPI1AllData();
 
             m.addAttribute("data", getdata); //페이지 객체 리스트
-            m.addAttribute("Lang", "kor");
-//            m.addAttribute("Lang", "eng");
             returnValue = "/admin/review/add.html";
         }else {
             returnValue = "redirect:/admin";
@@ -111,9 +107,6 @@ public class AReviewController {
         AES_256 aes256 = new AES_256();
         String aes256CbcEncode = aes256.AesCBCEncode(pw);
         System.out.println(aes256CbcEncode);
-
-        // 복호화
-//        String aes256CbcDeocde = aes256.AesCBCDecode(aes256CbcEncode);
 
         float starval = (float) Double.parseDouble(star);
 
@@ -149,8 +142,6 @@ public class AReviewController {
 
             m.addAttribute("data", getdata); //페이지 객체 리스트
 
-            m.addAttribute("Lang", "kor");
-//            m.addAttribute("Lang", "eng");
             returnValue = "/admin/review/edit.html";
         }else {
             returnValue = "redirect:/admin";

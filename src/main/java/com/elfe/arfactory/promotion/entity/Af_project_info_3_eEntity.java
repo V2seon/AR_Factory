@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 @Getter
 @Entity
 @Setter
-@Table(name = "AF_PROJECT_INFO_3")
+@Table(name = "AF_PROJECT_INFO_3_E")
 public class Af_project_info_3_eEntity {
 
     @Id

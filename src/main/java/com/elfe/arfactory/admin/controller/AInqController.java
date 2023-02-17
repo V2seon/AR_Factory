@@ -93,8 +93,6 @@ public class AInqController {
             m.addAttribute("seqname", seqname); //페이지 객체 리스트
             m.addAttribute("phon", phon); //페이지 객체 리스트
 
-            m.addAttribute("Lang", "kor");
-//            m.addAttribute("Lang", "eng");
             returnValue = "/admin/inq/list.html";
         }else {
             returnValue = "redirect:/admin";
@@ -134,10 +132,7 @@ public class AInqController {
             m.addAttribute("state", aiEntity.getAI_STATE());
             m.addAttribute("state2", aiEntity.getAI_STATE2());
             m.addAttribute("data", getdata); //페이지 객체 리스트
-//            m.addAttribute("optdata", optdata); //옵션 데이터 리스트 가져오기
 
-            m.addAttribute("Lang", "kor");
-//            m.addAttribute("Lang", "eng");
             returnValue = "/admin/inq/edit.html";
         }else {
             returnValue = "redirect:/admin";

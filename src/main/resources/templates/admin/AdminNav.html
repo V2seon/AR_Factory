@@ -27,8 +27,7 @@
                 <img src="/admin/images/img.jpg" alt="..." class="img-circle profile_img">
             </div>
             <div class="profile_info">
-                <span th:if="${Lang=='kor'}">환영합니다</span>
-                <span th:if="${Lang=='eng'}">Welcom</span>
+                <span>환영합니다</span>
                 <h2>홍길동</h2>
             </div>
         </div>
@@ -39,27 +38,7 @@
         <!-- sidebar menu -->
         <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
 
-<!--            <div th:if="${Lang=='kor'}" class="menu_section">-->
-<!--                <h3>메뉴</h3>-->
-<!--                <ul class="nav side-menu">-->
-<!--                    <li><a href="/admin/solution/list"><i class="fa fa-desktop"></i> 솔루션 정보 </a></li>-->
-<!--                    <li><a href="/admin/detail/list"><i class="fa fa-cubes"></i> 솔루션 상세 정보 </a></li>-->
-<!--                    <li><a href="/admin/inq/list"><i class="fa fa-comments-o"></i> 문의페이지 </a></li>-->
-<!--                    <li><a href="/admin/review/list"><i class="fa fa-edit"></i> 후기페이지 </a></li>-->
-<!--                </ul>-->
-<!--            </div>-->
-
-<!--            <div th:if="${Lang=='eng'}" class="menu_section">-->
-<!--                <h3>Menu</h3>-->
-<!--                <ul class="nav side-menu">-->
-<!--                    <li><a href="/admin/solution/list"><i class="fa fa-desktop"></i> Solution </a></li>-->
-<!--                    <li><a href="/admin/detail/list"><i class="fa fa-cubes"></i> Solution Detail </a></li>-->
-<!--                    <li><a href="/admin/inq/list"><i class="fa fa-comments-o"></i> Inquiry </a></li>-->
-<!--                    <li><a href="/admin/review/list"><i class="fa fa-edit"></i> Review </a></li>-->
-<!--                </ul>-->
-<!--            </div>-->
-
-            <div th:if="${Lang=='kor'}" class="menu_section">
+            <div class="menu_section">
                 <h3>메뉴</h3>
                 <ul class="nav side-menu">
                     <li><a><i class="fa fa-desktop"></i> 솔루션 정보 <span class="fa fa-chevron-down"></span></a>
@@ -68,16 +47,19 @@
                             <li><a href="/admin/solution/add">솔루션 등록</a></li>
                         </ul>
                     </li>
-                    <li><a><i class="fa fa-cubes"></i> 솔루션 상세 정보 <span class="fa fa-chevron-down"></span></a>
-                        <ul class="nav child_menu">
-                            <li><a href="/admin/detail/list">솔루션 상세 정보 목록</a></li>
-                            <li><a href="/admin/detail/contents/kor/add">콘텐츠 등록</a></li>
-                            <li><a href="/admin/detail/detail/kor/add">상세정보 등록</a></li>
-                            <li><a href="/admin/detail/case/kor/add">활용사례 등록</a></li>
-                            <li><a href="/admin/detail/purchase/kor/add">구입방식 등록</a></li>
-                            <li><a href="/admin/detail/option/kor/add">옵션 등록</a></li>
-                        </ul>
-                    </li>
+
+<!--                    <li><a><i class="fa fa-cubes"></i> 솔루션 상세 정보 <span class="fa fa-chevron-down"></span></a>-->
+<!--                        <ul class="nav child_menu">-->
+<!--                            <li><a href="/admin/detail/list">솔루션 상세 정보 목록</a></li>-->
+<!--                            <li><a href="/admin/detail/contents/kor/add">콘텐츠 등록</a></li>-->
+<!--                            <li><a href="/admin/detail/detail/kor/add">상세정보 등록</a></li>-->
+<!--                            <li><a href="/admin/detail/case/kor/add">활용사례 등록</a></li>-->
+<!--                            <li><a href="/admin/detail/purchase/kor/add">구입방식 등록</a></li>-->
+<!--                            <li><a href="/admin/detail/option/kor/add">옵션 등록</a></li>-->
+<!--                        </ul>-->
+<!--                    </li>-->
+                    <li><a href="/admin/detail/list"><i class="fa fa-cubes"></i> 솔루션 상세 정보 </a>
+
                     <li><a href="/admin/inq/list"><i class="fa fa-comments-o"></i> 문의페이지 </a>
                     </li>
                     <li><a><i class="fa fa-edit"></i> 후기페이지 <span class="fa fa-chevron-down"></span></a>
@@ -88,37 +70,6 @@
                     </li>
                 </ul>
             </div>
-
-            <div th:if="${Lang=='eng'}" class="menu_section">
-                <h3>Menu</h3>
-                <ul class="nav side-menu">
-                    <li><a><i class="fa fa-desktop"></i> Solution <span class="fa fa-chevron-down"></span></a>
-                        <ul class="nav child_menu">
-                            <li><a href="/admin/solution/list">Solution List</a></li>
-                            <li><a href="/admin/solution/add">Solution Add</a></li>
-                        </ul>
-                    </li>
-                    <li><a><i class="fa fa-cubes"></i> Solution Detail <span class="fa fa-chevron-down"></span></a>
-                        <ul class="nav child_menu">
-                            <li><a href="/admin/detail/list">Solution Detail List</a></li>
-                            <li><a href="/admin/detail/contents/eng/add">Contents Add</a></li>
-                            <li><a href="/admin/detail/detail/eng/add">Detail Add</a></li>
-                            <li><a href="/admin/detail/case/eng/add">Case Add</a></li>
-                            <li><a href="/admin/detail/purchase/eng/add">Purchase Add</a></li>
-                            <li><a href="/admin/detail/option/eng/add">Option Add</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="/admin/inq/list"><i class="fa fa-comments-o"></i> Inquiry </a>
-                    </li>
-                    <li><a><i class="fa fa-edit"></i> Review <span class="fa fa-chevron-down"></span></a>
-                        <ul class="nav child_menu">
-                            <li><a href="/admin/review/list">Review List</a></li>
-                            <li><a href="/admin/review/add">Review Add</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-
         </div>
         <!-- /sidebar menu -->
 

@@ -57,8 +57,6 @@ public class ASolutionController {
             m.addAttribute("s1", s1);
             m.addAttribute("solutionlist", api1Entities); //페이지 객체 리스트
 
-            m.addAttribute("Lang", "kor");
-//            m.addAttribute("Lang", "eng");
             returnValue = "/admin/solution/list.html";
         }else {
             returnValue = "redirect:/admin";
@@ -123,8 +121,6 @@ public class ASolutionController {
             m.addAttribute("viewSeq", api1Entity.getAPI1_VIEW_SEQ());
             m.addAttribute("state", api1Entity.getAPI1_STATE());
 
-            m.addAttribute("Lang", "kor");
-//            m.addAttribute("Lang", "eng");
             return "/admin/solution/edit.html";
         }else {
             returnValue = "redirect:/admin";

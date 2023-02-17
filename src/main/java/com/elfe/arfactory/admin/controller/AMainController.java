@@ -31,8 +31,7 @@ public class AMainController {
         String returnValue = "";
         HttpSession session = request.getSession();
         if(new SessionCheck().loginSessionCheck(request)){
-            m.addAttribute("Lang", "kor");
-//            m.addAttribute("Lang", "eng");
+
             returnValue = "/admin/main.html";
         }else {
             returnValue = "redirect:/admin";
@@ -76,15 +75,5 @@ public class AMainController {
             msg.put("logoutResult", "1");
         }
         return msg;
-    }
-
-
-
-
-
-    @GetMapping("/test")
-    public String aTest(Model m, HttpServletRequest request) {
-        m.addAttribute("pageName", "Test Page");
-        return "/admin/temp.html";
     }
 }

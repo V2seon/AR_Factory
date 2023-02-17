@@ -56,7 +56,7 @@
                     <table class="table table-striped color_table">
                       <thead>
                       <tr class="headings">
-                        <th colspan="2">#</th>
+                        <th colspan="2">패키지</th>
                         <th>콘텐츠 소개</th>
                         <th>상세정보</th>
                         <th>활용사례</th>
@@ -65,122 +65,97 @@
                       </tr>
                       </thead>
 
-                      <tbody>
+                      <tbody th:each="Co : ${solutionlist}">
                       <tr class="even pointer">
-                        <th scope="row" rowspan="2"><font size="3">1</font></th>
+                        <th scope="row" rowspan="2"><font size="3" th:text="${Co.API1_NAME}">패키지명</font></th>
+
                         <td><font size="1">한<br>글</font></td>
-                        <td>
-                          <button onclick="solution_edit()" type="button" class="btn btn-primary btn-sm">
-                            <i class="fa fa-pencil">등록</i>
-                          </button>
-                        </td>
-                        <td>
-                          <button onclick="solution_edit()" type="button" class="btn btn-primary btn-sm">
-                            <i class="fa fa-pencil">등록</i>
-                          </button>
-                        </td>
-                        <td>
-                          <button onclick="solution_edit()" type="button" class="btn btn-primary btn-sm">
-                            <i class="fa fa-pencil">등록</i>
-                          </button>
-                        </td>
-                        <td>
-                          <button onclick="solution_edit()" type="button" class="btn btn-primary btn-sm">
-                            <i class="fa fa-pencil">등록</i>
-                          </button>
-                        </td>
-                        <td>
-                          <button onclick="solution_edit()" type="button" class="btn btn-primary btn-sm">
-                            <i class="fa fa-pencil">등록</i>
-                          </button>
-                        </td>
-                      </tr>
-                      <tr class="even pointer">
-                        <td><font size="1">영<br>문</font></td>
-                        <td>
-                          <button onclick="solution_edit()" type="button" class="btn btn-info btn-sm">
-                            <i class="fa fa-edit">수정</i>
-                          </button>
-                        </td>
-                        <td>
-                          <button onclick="solution_edit()" type="button" class="btn btn-info btn-sm">
-                            <i class="fa fa-edit">수정</i>
-                          </button>
-                        </td>
-                        <td>
-                          <button onclick="solution_edit()" type="button" class="btn btn-info btn-sm">
-                            <i class="fa fa-edit">수정</i>
-                          </button>
-                        </td>
-                        <td>
-                          <button onclick="solution_edit()" type="button" class="btn btn-info btn-sm">
-                            <i class="fa fa-edit">수정</i>
-                          </button>
-                        </td>
-                        <td>
-                          <button onclick="solution_edit()" type="button" class="btn btn-info btn-sm">
-                            <i class="fa fa-edit">수정</i>
-                          </button>
-                        </td>
+                          <td>
+                              <button th:onclick="detail_add([[${Co.API1_SEQ}]],'kor','contents')" th:if="${api2[Co.API1_SEQ]}==null" type="button" class="btn btn-primary btn-sm">
+                                  <i class="fa fa-pencil">등록</i>
+                              </button>
+                              <button th:onclick="detail_edit([[${api2[Co.API1_SEQ]}]],'kor','contents')" th:if="${api2[Co.API1_SEQ]}!=null" type="button" class="btn btn-info btn-sm">
+                                  <i class="fa fa-edit">수정</i>
+                              </button>
+                          </td>
+                          <td>
+                              <button th:onclick="detail_add([[${Co.API1_SEQ}]],'kor','detail')" th:if="${api3[Co.API1_SEQ]}==null" type="button" class="btn btn-primary btn-sm">
+                                  <i class="fa fa-pencil">등록</i>
+                              </button>
+                              <button th:onclick="detail_edit([[${api3[Co.API1_SEQ]}]],'kor','detail')" th:if="${api3[Co.API1_SEQ]}!=null" type="button" class="btn btn-info btn-sm">
+                                  <i class="fa fa-edit">수정</i>
+                              </button>
+                          </td>
+                          <td>
+                              <button th:onclick="detail_add([[${Co.API1_SEQ}]],'kor','case')" th:if="${api4[Co.API1_SEQ]}==null" type="button" class="btn btn-primary btn-sm">
+                                  <i class="fa fa-pencil">등록</i>
+                              </button>
+                              <button th:onclick="detail_edit([[${api4[Co.API1_SEQ]}]],'kor','case')" th:if="${api4[Co.API1_SEQ]}!=null" type="button" class="btn btn-info btn-sm">
+                                  <i class="fa fa-edit">수정</i>
+                              </button>
+                          </td>
+                          <td>
+                              <button th:onclick="detail_add([[${Co.API1_SEQ}]],'kor','purchase')" th:if="${api5[Co.API1_SEQ]}==null" type="button" class="btn btn-primary btn-sm">
+                                  <i class="fa fa-pencil">등록</i>
+                              </button>
+                              <button th:onclick="detail_edit([[${api5[Co.API1_SEQ]}]],'kor','purchase')" th:if="${api5[Co.API1_SEQ]}!=null" type="button" class="btn btn-info btn-sm">
+                                  <i class="fa fa-edit">수정</i>
+                              </button>
+                          </td>
+                          <td>
+                              <button th:onclick="detail_add([[${Co.API1_SEQ}]],'kor','option')" th:if="${api6[Co.API1_SEQ]}==null" type="button" class="btn btn-primary btn-sm">
+                                  <i class="fa fa-pencil">등록</i>
+                              </button>
+                              <button th:onclick="detail_edit([[${api6[Co.API1_SEQ]}]],'kor','option')" th:if="${api6[Co.API1_SEQ]}!=null" type="button" class="btn btn-info btn-sm">
+                                  <i class="fa fa-edit">수정</i>
+                              </button>
+                          </td>
                       </tr>
 
                       <tr class="even pointer">
-                        <th scope="row" rowspan="2"><font size="3">11</font></th>
-                        <td><font size="1">한<br>글</font></td>
-                        <td>
-                          <button onclick="solution_edit()" type="button" class="btn btn-primary btn-sm">
-                            <i class="fa fa-pencil">등록</i>
-                          </button>
-                        </td>
-                        <td>
-                          <button onclick="solution_edit()" type="button" class="btn btn-primary btn-sm">
-                            <i class="fa fa-pencil">등록</i>
-                          </button>
-                        </td>
-                        <td>
-                          <button onclick="solution_edit()" type="button" class="btn btn-primary btn-sm">
-                            <i class="fa fa-pencil">등록</i>
-                          </button>
-                        </td>
-                        <td>
-                          <button onclick="solution_edit()" type="button" class="btn btn-primary btn-sm">
-                            <i class="fa fa-pencil">등록</i>
-                          </button>
-                        </td>
-                        <td>
-                          <button onclick="solution_edit()" type="button" class="btn btn-primary btn-sm">
-                            <i class="fa fa-pencil">등록</i>
-                          </button>
-                        </td>
-                      </tr>
-                      <tr class="even pointer">
                         <td><font size="1">영<br>문</font></td>
-                        <td>
-                          <button onclick="solution_edit()" type="button" class="btn btn-info btn-sm">
-                            <i class="fa fa-edit">수정</i>
-                          </button>
-                        </td>
-                        <td>
-                          <button onclick="solution_edit()" type="button" class="btn btn-info btn-sm">
-                            <i class="fa fa-edit">수정</i>
-                          </button>
-                        </td>
-                        <td>
-                          <button onclick="solution_edit()" type="button" class="btn btn-info btn-sm">
-                            <i class="fa fa-edit">수정</i>
-                          </button>
-                        </td>
-                        <td>
-                          <button onclick="solution_edit()" type="button" class="btn btn-info btn-sm">
-                            <i class="fa fa-edit">수정</i>
-                          </button>
-                        </td>
-                        <td>
-                          <button onclick="solution_edit()" type="button" class="btn btn-info btn-sm">
-                            <i class="fa fa-edit">수정</i>
-                          </button>
-                        </td>
+                          <td>
+                              <button th:onclick="detail_add([[${Co.API1_SEQ}]],'eng','contents')" th:if="${api2e[Co.API1_SEQ]}==null" type="button" class="btn btn-primary btn-sm">
+                                  <i class="fa fa-pencil">등록</i>
+                              </button>
+                              <button th:onclick="detail_edit([[${api2e[Co.API1_SEQ]}]],'eng','contents')" th:if="${api2e[Co.API1_SEQ]}!=null" type="button" class="btn btn-info btn-sm">
+                                  <i class="fa fa-edit">수정</i>
+                              </button>
+                          </td>
+                          <td>
+                              <button th:onclick="detail_add([[${Co.API1_SEQ}]],'eng','detail')" th:if="${api3e[Co.API1_SEQ]}==null" type="button" class="btn btn-primary btn-sm">
+                                  <i class="fa fa-pencil">등록</i>
+                              </button>
+                              <button th:onclick="detail_edit([[${api3e[Co.API1_SEQ]}]],'eng','detail')" th:if="${api3e[Co.API1_SEQ]}!=null" type="button" class="btn btn-info btn-sm">
+                                  <i class="fa fa-edit">수정</i>
+                              </button>
+                          </td>
+                          <td>
+                              <button th:onclick="detail_add([[${Co.API1_SEQ}]],'eng','case')" th:if="${api4e[Co.API1_SEQ]}==null" type="button" class="btn btn-primary btn-sm">
+                                  <i class="fa fa-pencil">등록</i>
+                              </button>
+                              <button th:onclick="detail_edit([[${api4e[Co.API1_SEQ]}]],'eng','case')" th:if="${api4e[Co.API1_SEQ]}!=null" type="button" class="btn btn-info btn-sm">
+                                  <i class="fa fa-edit">수정</i>
+                              </button>
+                          </td>
+                          <td>
+                              <button th:onclick="detail_add([[${Co.API1_SEQ}]],'eng','purchase')" th:if="${api5e[Co.API1_SEQ]}==null" type="button" class="btn btn-primary btn-sm">
+                                  <i class="fa fa-pencil">등록</i>
+                              </button>
+                              <button th:onclick="detail_edit([[${api5e[Co.API1_SEQ]}]],'eng','purchase')" th:if="${api5e[Co.API1_SEQ]}!=null" type="button" class="btn btn-info btn-sm">
+                                  <i class="fa fa-edit">수정</i>
+                              </button>
+                          </td>
+                          <td>
+                              <button th:onclick="detail_add([[${Co.API1_SEQ}]],'eng','option')" th:if="${api6e[Co.API1_SEQ]}==null" type="button" class="btn btn-primary btn-sm">
+                                  <i class="fa fa-pencil">등록</i>
+                              </button>
+                              <button th:onclick="detail_edit([[${api6e[Co.API1_SEQ]}]],'eng','option')" th:if="${api6e[Co.API1_SEQ]}!=null" type="button" class="btn btn-info btn-sm">
+                                  <i class="fa fa-edit">수정</i>
+                              </button>
+                          </td>
                       </tr>
+
                       </tbody>
                     </table>
                   </div>
@@ -190,8 +165,6 @@
             </div>
           </div>
         </div>
-
-
       </div>
       <!-- /page content -->
 
@@ -205,8 +178,7 @@
 </div>
 <div id="load"><img src="/admin/images/spinner.gif" alt="loading"></div>
 
-
-<script src="/admin/js/solution.js"></script>
+<script src="/admin/js/detail.js"></script>
 <script src="https://code.jquery.com/jquery-latest.js"></script>
 <!-- swal창 띄우기 -->
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>

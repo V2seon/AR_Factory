@@ -29,7 +29,10 @@
 
                 <div class="page-title">
                     <div class="title_left">
-                        <h3>콘텐츠 등록</h3>
+                        <h3>콘텐츠 수정
+                            <small th:if="${#strings.equals(Lang, 'kor')}">한글</small>
+                            <small th:if="${#strings.equals(Lang, 'eng')}">영어</small>
+                        </h3>
                     </div>
                 </div>
                 <div class="clearfix"></div>
@@ -47,15 +50,19 @@
                                     </div>
                                     <br />
                                     <div>
-                                    <label class="col-form-label col-md-3 col-sm-3" for="contentMessage">콘텐츠 설명 : </label>
-                                    <br>
-                                    <textarea required="required" name='contentMessage' id="contentMessage" class="big_area"></textarea>
+                                        <label class="col-form-label col-md-3 col-sm-3" for="contentMessage">콘텐츠 설명 : </label>
+                                        <br>
+                                        <textarea th:value="${contents}" th:text="${contents}" required="required" name='contentMessage' id="contentMessage" class="big_area"></textarea>
                                     </div>
+                                    <input style="display:none" id="pac_contents" th:value="${no}">
+                                    <input style="display:none" id="seq_contents" th:value="${seq}">
+                                    <input style="display:none" id="lang_contents" th:value="${Lang}">
+
 
                                     <div class="ln_solid">
                                         <div class="form-group">
                                             <div class="col-md-6 offset-md-3">
-                                                <button type='submit' class="btn btn-primary">Submit</button>
+                                                <button type='button' onclick="contents_Save('edit')" class="btn btn-primary">Submit</button>
                                                 <button type='reset' class="btn btn-success">Reset</button>
                                             </div>
                                         </div>
@@ -81,7 +88,7 @@
 <div id="load"><img src="/admin/images/spinner.gif" alt="loading"></div>
 
 
-<script src="/admin/js/admin.js"></script>
+<script src="/admin/js/detail.js"></script>
 <script src="https://code.jquery.com/jquery-latest.js"></script>
 <!-- swal창 띄우기 -->
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>

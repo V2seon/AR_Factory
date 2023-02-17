@@ -39,8 +39,8 @@ public class Af_project_info_4Dto {
                 .aPI1_SEQ(API1_SEQ)
                 .aPI4_CONTENT1(API4_CONTENT1)
                 .aPI4_CONTENT2(API4_CONTENT2)
-                .aPI4_CONTENT1(API4_CONTENT3)
-                .aPI4_CONTENT2(API4_CONTENT4)
+                .aPI4_CONTENT3(API4_CONTENT3)
+                .aPI4_CONTENT4(API4_CONTENT4)
                 .aPI4_IDATETIME(API4_IDATETIME)
                 .aPI4_UDATETIME(API4_UDATETIME)
                 .build();
