@@ -85,25 +85,25 @@ function solution_add(){
 
 // 솔루션 수정
 function solution_edit(api1_seq){
-    swal({
-        title : "수정하시겠습니까?",
-        icon : "info",
-        buttons: {
-            confirm: {
-                text: "YES",
-                value: true
-            },
-            cancle: {
-                text: "NO",
-                value: false
-            }
-        }
-    }).then(function(result){
-        if(result){
+//    swal({
+//        title : "수정하시겠습니까?",
+//        icon : "info",
+//        buttons: {
+//            confirm: {
+//                text: "YES",
+//                value: true
+//            },
+//            cancle: {
+//                text: "NO",
+//                value: false
+//            }
+//        }
+//    }).then(function(result){
+//        if(result){
             $('#load').show();
             location.href = "/admin/solution/edit?no="+api1_seq+"";
-        }
-    });
+//        }
+//    });
 }
 // 수정저장
 function solution_editSave(seq){

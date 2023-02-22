@@ -28,7 +28,7 @@ function login(){
             success : function(result){
                 $("#load").hide();
                 if(result.loginResult == "1"){
-                    location.href = "/admin/main";
+                    location.href = "/admin/solution/list";
                 }else if(result.loginResult == "0"){
                     swal({
                         text : "계정 정보가 일치하지 않습니다.",

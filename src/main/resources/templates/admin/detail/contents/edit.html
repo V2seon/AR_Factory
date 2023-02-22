@@ -13,8 +13,6 @@
     <link href="/admin/css/vendors/nprogress.css" rel="stylesheet">
     <!-- jQuery custom content scroller -->
     <link href="/admin/css/vendors/jquery.mCustomScrollbar.min.css" rel="stylesheet"/>
-    <!-- Dropzone.js -->
-    <link href="/admin/css/vendors/dropzone.min.css" rel="stylesheet">
 
     <!-- Custom Theme Style -->
     <link href="/admin/css/custom.min.css" rel="stylesheet">
@@ -42,30 +40,80 @@
                         <div class="x_panel">
                             <div class="x_content">
                                 <form data-parsley-validate>
+
                                     <label class="col-form-label col-md-3 col-sm-3">이미지 업로드(최대 6장) : </label>
                                     <br>
                                     <br>
-                                    <input type="image" style="display:none" id="cttImg1">
-                                    <div action="form_upload.html" class="dropzone">
+                                    <div action="form_upload.html" class="uploadzone" onclick="setCttimg('edit')">
+
+                                        <input type="file" class="display_none" accept="image/*" id="cttImg1" onchange="readURL(this,1);">
+                                        <input type="file" class="display_none" accept="image/*" id="cttImg2" onchange="readURL(this,2);">
+                                        <input type="file" class="display_none" accept="image/*" id="cttImg3" onchange="readURL(this,3);">
+                                        <input type="file" class="display_none" accept="image/*" id="cttImg4" onchange="readURL(this,4);">
+                                        <input type="file" class="display_none" accept="image/*" id="cttImg5" onchange="readURL(this,5);">
+                                        <input type="file" class="display_none" accept="image/*" id="cttImg6" onchange="readURL(this,6);">
+
+                                        <input type="text" class="display_none" id="cttimgname1" th:value="${img1}">
+                                        <input type="text" class="display_none" id="cttimgname2" th:value="${img2}">
+                                        <input type="text" class="display_none" id="cttimgname3" th:value="${img3}">
+                                        <input type="text" class="display_none" id="cttimgname4" th:value="${img4}">
+                                        <input type="text" class="display_none" id="cttimgname5" th:value="${img5}">
+                                        <input type="text" class="display_none" id="cttimgname6" th:value="${img6}">
+                                        <div id="cttVimgs1" class="display_flex" th:style="${img1}!=null and ${img1}!='' ? 'display:flex' : 'display:none'">
+                                            <img id="cttimgV1" class="views" th:src="${img1}!=null and ${img1}!='' ? '/file_dir/'+${img1} : ''">
+                                            <div class="delete" id="cttVdel1">
+                                                <img onclick="cttVdel(1,'edit')" class="delbtn" src="/admin/images/delete.png">
+                                                <input class="display_none" id="cttdelcheck1" type="text" value="null">
+                                            </div>
+                                        </div>
+                                        <div id="cttVimgs2" class="display_flex" th:style="${img2}!=null and ${img2}!='' ? 'display:flex' : 'display:none'">
+                                            <img id="cttimgV2" class="views" th:src="${img2}!=null and ${img2}!='' ? '/file_dir/'+${img2} : ''">
+                                            <div class="delete" id="cttVdel2">
+                                                <img onclick="cttVdel(2,'edit')" class="delbtn" src="/admin/images/delete.png">
+                                                <input class="display_none" id="cttdelcheck2" type="text" value="null">
+                                            </div>
+                                        </div>
+                                        <div id="cttVimgs3" class="display_flex" th:style="${img3}!=null and ${img3}!='' ? 'display:flex' : 'display:none'">
+                                            <img id="cttimgV3" class="views" th:src="${img3}!=null and ${img3}!='' ? '/file_dir/'+${img3} : ''">
+                                            <div class="delete" id="cttVdel3">
+                                                <img onclick="cttVdel(3,'edit')" class="delbtn" src="/admin/images/delete.png">
+                                                <input class="display_none" id="cttdelcheck3" type="text" value="null">
+                                            </div>
+                                        </div>
+                                        <div id="cttVimgs4" class="display_flex" th:style="${img4}!=null and ${img4}!='' ? 'display:flex' : 'display:none'">
+                                            <img id="cttimgV4" class="views" th:src="${img4}!=null and ${img4}!='' ? '/file_dir/'+${img4} : ''">
+                                            <div class="delete" id="cttVdel4">
+                                                <img onclick="cttVdel(4,'edit')" class="delbtn" src="/admin/images/delete.png">
+                                                <input class="display_none" id="cttdelcheck4" type="text" value="null">
+                                            </div>
+                                        </div>
+                                        <div id="cttVimgs5" class="display_flex" th:style="${img5}!=null and ${img5}!='' ? 'display:flex' : 'display:none'">
+                                            <img id="cttimgV5" class="views" th:src="${img5}!=null and ${img5}!='' ? '/file_dir/'+${img5} : ''">
+                                            <div class="delete" id="cttVdel5">
+                                                <img onclick="cttVdel(5,'edit')" class="delbtn" src="/admin/images/delete.png">
+                                                <input class="display_none" id="cttdelcheck5" type="text" value="null">
+                                            </div>
+                                        </div>
+                                        <div id="cttVimgs6" class="display_flex" th:style="${img6}!=null and ${img6}!='' ? 'display:flex' : 'display:none'">
+                                            <img id="cttimgV6" class="views" th:src="${img6}!=null and ${img6}!='' ? '/file_dir/'+${img6} : ''">
+                                            <div class="delete" id="cttVdel6">
+                                                <img onclick="cttVdel(6,'edit')" class="delbtn" src="/admin/images/delete.png">
+                                                <input class="display_none" id="cttdelcheck6" type="text" value="null">
+                                            </div>
+                                        </div>
                                     </div>
                                     <br />
-                                    <div>
-                                        <label class="col-form-label col-md-3 col-sm-3" for="contentMessage">콘텐츠 설명 : </label>
-                                        <br>
-                                        <textarea th:value="${contents}" th:text="${contents}" required="required" name='contentMessage' id="contentMessage" class="big_area"></textarea>
-                                    </div>
+
+                                    <label class="col-form-label col-md-3 col-sm-3" for="contentMessage">콘텐츠 설명 : </label>
+                                    <br>
+                                    <textarea th:value="${contents}" th:text="${contents}" required="required" name='contentMessage' id="contentMessage" class="big_area"></textarea>
+
                                     <input style="display:none" id="pac_contents" th:value="${no}">
                                     <input style="display:none" id="seq_contents" th:value="${seq}">
                                     <input style="display:none" id="lang_contents" th:value="${Lang}">
-
-
-                                    <div class="ln_solid">
-                                        <div class="form-group">
-                                            <div class="col-md-6 offset-md-3">
-                                                <button type='button' onclick="contents_Save('edit')" class="btn btn-primary">Submit</button>
-                                                <button type='reset' class="btn btn-success">Reset</button>
-                                            </div>
-                                        </div>
+                                    <div class="form-group srbutton">
+                                        <button type='button' onclick="contents_Save('edit')" class="btn btn-primary">저장</button>
+                                        <button type='reset' class="btn btn-success">수정</button>
                                     </div>
                                 </form>
                             </div>
@@ -104,8 +152,6 @@
 <script src="/admin/js/design/vendors/nprogress.js"></script>
 <!-- jQuery custom content scroller -->
 <script src="/admin/js/design/vendors/jquery.mCustomScrollbar.concat.min.js"></script>
-<!-- Dropzone.js -->
-<script src="/admin/js/design/vendors/dropzone.min.js"></script>
 
 <!-- Custom Theme Scripts -->
 <script src="/admin/js/design/custom.min.js"></script>

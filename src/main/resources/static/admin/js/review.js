@@ -67,25 +67,8 @@ function review_add(){
 
 // 후기 수정
 function review_edit(seq){
-    swal({
-        title : "수정하시겠습니까?",
-        icon : "info",
-        buttons: {
-            confirm: {
-                text: "YES",
-                value: true
-            },
-            cancle: {
-                text: "NO",
-                value: false
-            }
-        }
-    }).then(function(result){
-        if(result){
-            $('#load').show();
-            location.href = "/admin/review/edit?no="+seq+"";
-        }
-    });
+    $('#load').show();
+    location.href = "/admin/review/edit?no="+seq+"";
 }
 // 수정저장
 function review_editSave(seq){

@@ -19,14 +19,15 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.io.File;
+import java.io.IOException;
 import java.time.LocalDateTime;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 @Controller
 @AllArgsConstructor
@@ -273,6 +274,43 @@ public class ADetailController {
 
 
 
+    // 콘텐츠 등록 저장
+    @ResponseBody
+    @RequestMapping(method = RequestMethod.POST, value = "/contents/add")
+    public HashMap<String, String> ContentsAddData(Model m, HttpServletRequest request,
+                                                 @RequestParam(required = false, defaultValue = "", value = "no") Long no,
+                                                 @RequestParam(required = false, defaultValue = "", value = "lang") String lang,
+                                                 @RequestParam(required = false, defaultValue = "", value = "text") String text,
+                                                 @RequestParam(required = false, defaultValue = "", value = "img1") String img1,
+                                                 @RequestParam(required = false, defaultValue = "", value = "img2") String img2,
+                                                 @RequestParam(required = false, defaultValue = "", value = "img3") String img3,
+                                                 @RequestParam(required = false, defaultValue = "", value = "img4") String img4,
+                                                 @RequestParam(required = false, defaultValue = "", value = "img5") String img5,
+                                                 @RequestParam(required = false, defaultValue = "", value = "img6") String img6) {
+        LocalDateTime sdf = LocalDateTime.now();
+        HashMap<String, String> msg = new HashMap<String, String>();
+
+        if(lang.equals("kor")){
+            Af_project_info_2Dto api2Dto = new Af_project_info_2Dto(null, no, text, img1, img2, img3, img4, img5, img6, sdf, sdf);
+            afDetailService.api2Save(api2Dto);
+
+            if(api2Repository.checkAPI2Data(no)==1){
+                msg.put("save", "1");
+            }else if(api2Repository.checkAPI2Data(no)==0){
+                msg.put("save", "0");
+            }
+        }else if(lang.equals("eng")){
+            Af_project_info_2_eDto api2eDto = new Af_project_info_2_eDto(null, no, text, img1, img2, img3, img4, img5, img6, sdf, sdf);
+            afDetailService.api2eSave(api2eDto);
+
+            if(api2eRepository.checkAPI2eData(no)==1){
+                msg.put("save", "1");
+            }else if(api2eRepository.checkAPI2eData(no)==0){
+                msg.put("save", "0");
+            }
+        }
+        return msg;
+    }
     // 상세정보 등록 저장
     @ResponseBody
     @RequestMapping(method = RequestMethod.POST, value = "/detail/add")
@@ -415,15 +453,52 @@ public class ADetailController {
 
 
 
+    // 콘텐츠 수정 저장
+    @ResponseBody
+    @RequestMapping(method = RequestMethod.POST, value = "/contents/edit")
+    public HashMap<String, String> ContentseditData(Model m, HttpServletRequest request,
+                @RequestParam(required = false, defaultValue = "", value = "no") Long no,
+                @RequestParam(required = false, defaultValue = "", value = "seq") Long seq,
+                @RequestParam(required = false, defaultValue = "", value = "lang") String lang,
+                @RequestParam(required = false, defaultValue = "", value = "text") String text,
+                @RequestParam(required = false, defaultValue = "", value = "img1") String img1,
+                @RequestParam(required = false, defaultValue = "", value = "img2") String img2,
+                @RequestParam(required = false, defaultValue = "", value = "img3") String img3,
+                @RequestParam(required = false, defaultValue = "", value = "img4") String img4,
+                @RequestParam(required = false, defaultValue = "", value = "img5") String img5,
+                @RequestParam(required = false, defaultValue = "", value = "img6") String img6) {
+        HashMap<String, String> msg = new HashMap<String, String>();
+        if(lang.equals("kor")){
+            Af_project_info_2Entity api2Ett1 = api2Repository.getAPI2Data(seq);
+            String timecheck = String.valueOf(api2Ett1.getAPI2_UDATETIME());
 
+            LocalDateTime sdf = LocalDateTime.now();
+            api2Repository.updateAPI2Data(seq, text, img1, img2, img3, img4, img5, img6, sdf);
 
+            Af_project_info_2Entity api2Ett2 = api2Repository.getAPI2Data(seq);
 
+            if(String.valueOf(api2Ett2.getAPI2_UDATETIME()).equals(timecheck)){
+                msg.put("save", "0");
+            }else {
+                msg.put("save", "1");
+            }
+        }else if(lang.equals("eng")){
+            Af_project_info_2_eEntity api2eEtt1 = api2eRepository.getAPI2eData(seq);
+            String timecheck = String.valueOf(api2eEtt1.getAPI2E_UDATETIME());
+            log.info(timecheck);
 
+            LocalDateTime sdf = LocalDateTime.now();
+            api2eRepository.updateAPI2eData(seq, text, img1, img2, img3, img4, img5, img6, sdf);
+            Af_project_info_2_eEntity api2eEtt2 = api2eRepository.getAPI2eData(seq);
 
-
-
-
-
+            if(String.valueOf(api2eEtt2.getAPI2E_UDATETIME()).equals(timecheck)){
+                msg.put("save", "0");
+            }else {
+                msg.put("save", "1");
+            }
+        }
+        return msg;
+    }
     // 상세정보 수정 저장
     @ResponseBody
     @RequestMapping(method = RequestMethod.POST, value = "/detail/edit")
@@ -464,7 +539,6 @@ public class ADetailController {
         }
         return msg;
     }
-
     // 활용사례 수정 저장
     @ResponseBody
     @RequestMapping(method = RequestMethod.POST, value = "/case/edit")
@@ -507,7 +581,6 @@ public class ADetailController {
         }
         return msg;
     }
-
     // 구입방식 수정 저장
     @ResponseBody
     @RequestMapping(method = RequestMethod.POST, value = "/purchase/edit")
@@ -550,7 +623,6 @@ public class ADetailController {
         }
         return msg;
     }
-
     // 옵션 수정 저장
     @ResponseBody
     @RequestMapping(method = RequestMethod.POST, value = "/option/edit")
@@ -595,5 +667,124 @@ public class ADetailController {
             }
         }
         return msg;
+    }
+
+
+
+
+    // 파일 다운로드
+    @ResponseBody
+    @RequestMapping(method = RequestMethod.POST, value = "/cttUpload")
+    public String ContentsUpload(MultipartHttpServletRequest request) {
+        MultipartFile file1 = request.getFile("file1");
+        MultipartFile file2 = request.getFile("file2");
+        MultipartFile file3 = request.getFile("file3");
+        MultipartFile file4 = request.getFile("file4");
+        MultipartFile file5 = request.getFile("file5");
+        MultipartFile file6 = request.getFile("file6");
+        String filename = "";
+        String path = "C:/Users/sec/Desktop/temp/"; // 저장경로 ********************
+        try {
+            if(file1!=null){
+                filename = file1.getOriginalFilename();
+                log.info("1!!!!!"+filename);
+                if(filename.split(",")[0].equals("check")){
+                    File D_file = new File(path + filename.split(",")[1]);
+                    if(D_file.exists()){
+                        D_file.delete();
+                    }
+                }else {
+                    File D_file = new File(path + filename);
+                    if(D_file.exists()){
+                        D_file.delete();
+                    }
+                    file1.transferTo(new File(path + filename));
+                }
+            }
+            if(file2!=null){
+                filename = file2.getOriginalFilename();
+                log.info("2!!!!!"+filename);
+                if(filename.split(",")[0].equals("check")){
+                    File D_file = new File(path + filename.split(",")[1]);
+                    if(D_file.exists()){
+                        D_file.delete();
+                    }
+                }else {
+                    File D_file = new File(path + filename);
+                    if(D_file.exists()){
+                        D_file.delete();
+                    }
+                    file2.transferTo(new File(path + filename));
+                }
+            }
+            if(file3!=null){
+                filename = file3.getOriginalFilename();
+                log.info("3!!!!!"+filename);
+                if(filename.split(",")[0].equals("check")){
+                    File D_file = new File(path + filename.split(",")[1]);
+                    if(D_file.exists()){
+                        D_file.delete();
+                    }
+                }else {
+                    File D_file = new File(path + filename);
+                    if(D_file.exists()){
+                        D_file.delete();
+                    }
+                    file3.transferTo(new File(path + filename));
+                }
+            }
+            if(file4!=null){
+                filename = file4.getOriginalFilename();
+                log.info("4!!!!!"+filename);
+                if(filename.split(",")[0].equals("check")){
+                    File D_file = new File(path + filename.split(",")[1]);
+                    if(D_file.exists()){
+                        D_file.delete();
+                    }
+                }else {
+                    File D_file = new File(path + filename);
+                    if(D_file.exists()){
+                        D_file.delete();
+                    }
+                    file4.transferTo(new File(path + filename));
+                }
+            }
+            if(file5!=null){
+                filename = file5.getOriginalFilename();
+                log.info("5!!!!!"+filename);
+                if(filename.split(",")[0].equals("check")){
+                    File D_file = new File(path + filename.split(",")[1]);
+                    if(D_file.exists()){
+                        D_file.delete();
+                    }
+                }else {
+                    File D_file = new File(path + filename);
+                    if(D_file.exists()){
+                        D_file.delete();
+                    }
+                    file5.transferTo(new File(path + filename));
+                }
+            }
+            if(file6!=null){
+                filename = file6.getOriginalFilename();
+                log.info("6!!!!!"+filename);
+                if(filename.split(",")[0].equals("check")){
+                    File D_file = new File(path + filename.split(",")[1]);
+                    if(D_file.exists()){
+                        D_file.delete();
+                    }
+                }else {
+                    File D_file = new File(path + filename);
+                    if(D_file.exists()){
+                        D_file.delete();
+                    }
+                    file6.transferTo(new File(path + filename));
+                }
+            }
+            return "1"; // 저장명 반환
+        } catch (IOException e) {
+            e.printStackTrace();
+            return "0";
+        }
     }
 }

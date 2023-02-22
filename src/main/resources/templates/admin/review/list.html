@@ -55,19 +55,23 @@
                                     <div class="clearfix"></div>
                                 </div>
                                 <div class="x_content">
-
-                                    <article th:each="Co: ${reviewlist}" th:if="${Co.API1_SEQ}==${i.key}" class="media event boxs" onclick="location.href='#'">
-
-                                        <a class="user-profile2 pull-left" aria-haspopup="true"
-                                           data-toggle="dropdown" aria-expanded="false">
-                                            <img src="/admin/images/img.jpg" alt="">
-                                        </a>
-                                        <div class="media-body">
-                                            <a class="title" th:text="${Co.AR_NAME}">글쓴이</a>
-                                            <a class="a_edit" th:onclick="review_edit([[${Co.AR_SEQ}]])">수정</a>
-                                            <a class="a_delete" th:onclick="review_delete([[${Co.AR_SEQ}]])">삭제</a>
-                                            <span th:if="${Co.AR_STATE}==0">비노출</span><span th:if="${Co.AR_STATE}==1">노출</span>
-                                            <br>
+                                    <table class="table table-striped jambo_table bulk_action">
+                                        <thead>
+                                        <tr class="headings">
+                                            <th>작성자</th>
+                                            <th>별점</th>
+                                            <th>리뷰내용</th>
+                                            <th>노출여부</th>
+                                            <th>등록날짜</th>
+                                            <th>최종 수정날짜</th>
+                                            <th>수정</th>
+                                            <th>삭제</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr class="even pointer" th:each="Co: ${reviewlist}" th:if="${Co.API1_SEQ}==${i.key}">
+                                            <td th:text="${Co.AR_NAME}">작성자</td>
+                                            <td>
                                                 <div class="starpoint_box2">
                                                     <span th:if="${Co.AR_STAR}==0" class="starpoint_bg" style="width:0%;">별점</span>
                                                     <span th:if="${Co.AR_STAR}==0.5" class="starpoint_bg" style="width:10%;">별점</span>
@@ -80,13 +84,26 @@
                                                     <span th:if="${Co.AR_STAR}==4" class="starpoint_bg" style="width:80%;">별점</span>
                                                     <span th:if="${Co.AR_STAR}==4.5" class="starpoint_bg" style="width:90%;">별점</span>
                                                     <span th:if="${Co.AR_STAR}==5" class="starpoint_bg" style="width:100%;">별점</span>
-                                                </div><br>
-                                            <span th:text="'등록 : '+${#strings.substring(Co.AR_IDATETIME, 0, 10)}">등록날짜</span>
-                                            <span th:text="' / 수정 : '+${#strings.substring(Co.AR_UDATETIME, 0, 10)}">최종수정날짜</span>
-                                            <br>
-                                            <div style="word-break:break-all;"><span th:text="${Co.AR_CONTENT}">리뷰내용</span></div>
-                                        </div>
-                                    </article>
+                                                </div>
+                                            </td>
+                                            <td th:text="${Co.AR_CONTENT}">리뷰내용</td>
+                                            <td th:if="${Co.AR_STATE}==0">비노출</td>
+                                            <td th:if="${Co.AR_STATE}==1">노출</td>
+                                            <td th:text="${#strings.substring(Co.AR_IDATETIME, 0, 10)}">등록날짜</td>
+                                            <td th:text="${#strings.substring(Co.AR_UDATETIME, 0, 10)}">최종 수정날짜</td>
+                                            <td>
+                                                <button th:onclick="review_edit([[${Co.AR_SEQ}]])" type="button" class="btn btn-info btn-sm">
+                                                    <i class="fa fa-edit"> 수정 </i>
+                                                </button>
+                                            </td>
+                                            <td>
+                                                <button th:onclick="review_delete([[${Co.AR_SEQ}]])" type="button" class="btn btn-danger btn-sm">
+                                                    <i class="fa fa-trash-o"> 삭제 </i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>

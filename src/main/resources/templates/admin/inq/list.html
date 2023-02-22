@@ -59,28 +59,39 @@
                                     <div class="clearfix"></div>
                                 </div>
                                 <div class="x_content">
-
-                                    <article th:each="Co: ${inqlist}" th:if="${Co.API1_SEQ}==${i.key}" class="media event boxs" onclick="location.href='#'">
-
-                                        <a class="user-profile2 pull-left" aria-haspopup="true"
-                                           data-toggle="dropdown" aria-expanded="false">
-                                            <img src="/admin/images/img.jpg" alt="">
-                                        </a>
-                                        <div class="media-body">
-                                            <a class="title" th:text="${Co.AI_NAME}">문의고객</a>
-                                            <a class="a_edit" th:onclick="inq_edit([[${Co.AI_SEQ}]])">수정</a>
-                                            <br>
-                                            <span th:text="${phon[Co.AI_SEQ]}">전화번호</span>
-                                            <br>
-                                            <span th:text="'등록 : '+${#strings.substring(Co.AI_IDATETIME, 0, 10)}">등록날짜</span>
-                                            <span th:text="' / 수정 : '+${#strings.substring(Co.AI_UDATETIME, 0, 10)}">최종수정날짜</span>
-                                            <br>
-                                            <span th:if="${Co.AI_STATE}==0">문의, </span><span th:if="${Co.AI_STATE}==1">문의중, </span><span th:if="${Co.AI_STATE}==2">문의완료,  </span>
-                                            <span th:if="${Co.AI_STATE2}==0">미결제</span><span th:if="${Co.AI_STATE2}==1">결제완료</span>
-                                            <br>
-                                            <span th:text="'옵션번호 : '+${Co.AI_OPT}">0</span>
-                                        </div>
-                                    </article>
+                                    <table class="table table-striped jambo_table bulk_action">
+                                        <thead>
+                                        <tr class="headings">
+                                            <th>문의고객</th>
+                                            <th>전화번호</th>
+                                            <th>선택옵션</th>
+                                            <th>문의상태</th>
+                                            <th>구매상태</th>
+                                            <th>등록날짜</th>
+                                            <th>최종 수정날짜</th>
+                                            <th>수정</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr class="even pointer" th:each="Co : ${inqlist}" th:if="${Co.API1_SEQ}==${i.key}">
+                                            <td th:text="${Co.AI_NAME}">문의고객</td>
+                                            <td th:text="${phon[Co.AI_SEQ]}">전화번호</td>
+                                            <td th:text="${Co.AI_OPT}">선택옵션</td>
+                                            <td th:if="${Co.AI_STATE}==0">문의</td>
+                                            <td th:if="${Co.AI_STATE}==1">문의중</td>
+                                            <td th:if="${Co.AI_STATE}==2">문의완료</td>
+                                            <td th:if="${Co.AI_STATE2}==0">미결제</td>
+                                            <td th:if="${Co.AI_STATE2}==1">결제완료</td>
+                                            <td th:text="${#strings.substring(Co.AI_IDATETIME, 0, 10)}">등록날짜</td>
+                                            <td th:text="${#strings.substring(Co.AI_UDATETIME, 0, 10)}">최종 수정날짜</td>
+                                            <td>
+                                                <button th:onclick="inq_edit([[${Co.AI_SEQ}]])" type="button" class="btn btn-info btn-sm">
+                                                    <i class="fa fa-edit"> 수정 </i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>

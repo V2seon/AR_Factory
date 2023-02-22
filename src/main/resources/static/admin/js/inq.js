@@ -1,24 +1,7 @@
 // 문의 수정
 function inq_edit(seq){
-    swal({
-        title : "수정하시겠습니까?",
-        icon : "info",
-        buttons: {
-            confirm: {
-                text: "YES",
-                value: true
-            },
-            cancle: {
-                text: "NO",
-                value: false
-            }
-        }
-    }).then(function(result){
-        if(result){
-            $('#load').show();
-            location.href = "/admin/inq/edit?no="+seq+"";
-        }
-    });
+    $('#load').show();
+    location.href = "/admin/inq/edit?no="+seq+"";
 }
 
 // 문의 수정 저장

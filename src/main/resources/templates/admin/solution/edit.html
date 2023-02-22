@@ -98,14 +98,9 @@
                                             <input type="radio" class="flat" name="SShowNum" value="1" th:checked="${state}==1" />
                                         </p>
                                     </div>
-
-                                    <div class="ln_solid">
-                                        <div class="form-group">
-                                            <div class="col-md-6 offset-md-3">
-                                                <button type='button' class="btn btn-primary" th:onclick="solution_editSave([[${seq}]])">Submit</button>
-                                                <button type='reset' class="btn btn-success">Reset</button>
-                                            </div>
-                                        </div>
+                                    <div class="form-group srbutton">
+                                        <button type='button' class="btn btn-primary" th:onclick="solution_editSave([[${seq}]])">저장</button>
+                                        <button type='reset' class="btn btn-success">수정</button>
                                     </div>
                                 </form>
                             </div>
