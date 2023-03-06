@@ -7,6 +7,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.querydsl.QuerydslPredicateExecutor;
 
 import javax.transaction.Transactional;
 import java.time.LocalDateTime;
@@ -14,7 +15,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.List;
 
-public interface Af_project_info_1Repository extends JpaRepository<Af_project_info_1Entity, Long> {
+public interface Af_project_info_1Repository extends JpaRepository<Af_project_info_1Entity, Long>, QuerydslPredicateExecutor<Af_project_info_1Entity> {
 
     // promotion
     @Query(value = "SELECT * FROM AF_PROJECT_INFO_1 where API1_STATE =:num" , nativeQuery = true)

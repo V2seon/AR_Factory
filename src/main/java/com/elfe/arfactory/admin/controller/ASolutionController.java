@@ -57,6 +57,9 @@ public class ASolutionController {
             m.addAttribute("s1", s1);
             m.addAttribute("solutionlist", api1Entities); //페이지 객체 리스트
 
+            m.addAttribute("nowurl0","/admin/solution/list");
+
+
             returnValue = "/admin/solution/list.html";
         }else {
             returnValue = "redirect:/admin";
@@ -134,13 +137,13 @@ public class ASolutionController {
     public HashMap<String, String> solutionEditData(Model m, HttpServletRequest request,
                                                     @RequestParam(required = false, defaultValue = "", value = "no") Long no,
                                                     @RequestParam(required = false, defaultValue = "", value = "name") String name,
-                                                   @RequestParam(required = false, defaultValue = "", value = "type") String type,
-                                                   @RequestParam(required = false, defaultValue = "", value = "name_e") String name_e,
-                                                   @RequestParam(required = false, defaultValue = "", value = "type_e") String type_e,
-                                                   @RequestParam(required = false, defaultValue = "", value = "googleLink") String googleLink,
-                                                   @RequestParam(required = false, defaultValue = "", value = "appleLink") String appleLink,
-                                                   @RequestParam(required = false, defaultValue = "", value = "mainNum") int mainNum,
-                                                   @RequestParam(required = false, defaultValue = "", value = "show") int show) {
+                                                    @RequestParam(required = false, defaultValue = "", value = "type") String type,
+                                                    @RequestParam(required = false, defaultValue = "", value = "name_e") String name_e,
+                                                    @RequestParam(required = false, defaultValue = "", value = "type_e") String type_e,
+                                                    @RequestParam(required = false, defaultValue = "", value = "googleLink") String googleLink,
+                                                    @RequestParam(required = false, defaultValue = "", value = "appleLink") String appleLink,
+                                                    @RequestParam(required = false, defaultValue = "", value = "mainNum") int mainNum,
+                                                    @RequestParam(required = false, defaultValue = "", value = "show") int show) {
         Af_project_info_1Entity api1Ett1 = api1Repository.getAPI1Data(no);
         String timecheck = String.valueOf(api1Ett1.getAPI1_UDATETIME());
 
@@ -163,7 +166,7 @@ public class ASolutionController {
     @ResponseBody
     @RequestMapping(method = RequestMethod.GET, value = "/delete")
     public HashMap<String, String> solutionDeleteData(Model m, HttpServletRequest request,
-                                                    @RequestParam(required = false, defaultValue = "", value = "no") Long no) {
+                                                      @RequestParam(required = false, defaultValue = "", value = "no") Long no) {
         api1Repository.deleteAPI1Data(no);
 
         HashMap<String, String> msg = new HashMap<String, String>();
@@ -174,4 +177,33 @@ public class ASolutionController {
         }
         return msg;
     }
+
+    @RequestMapping(value = "/solution_search", method = RequestMethod.POST)
+    public String log_search(Model model, HttpServletRequest request,
+                             @RequestParam(required = false ,defaultValue = "0" , value="page") int page,
+                             @RequestParam(required = false ,defaultValue = "" , value="selectKey") String selectKey,
+                             @RequestParam(required = false ,defaultValue = "" , value="titleText") String titleText){
+        HttpSession session = request.getSession();
+
+        Pageable pageable = PageRequest.of(page, 10);
+        int totalPages = api1Service.selectALLTable(selectKey, titleText, pageable).getTotalPages();
+        Pagination pagination = new Pagination(totalPages, page);
+
+        model.addAttribute("thisPage", pagination.getPage()); //현재 몇 페이지에 있는지 확인하기 위함
+        model.addAttribute("isNextSection", pagination.isNextSection()); //다음버튼 유무 확인하기 위함
+        model.addAttribute("isPrevSection", pagination.isPrevSection()); //이전버튼 유무 확인하기 위함
+        model.addAttribute("firstBtnIndex", pagination.getFirstBtnIndex()); //버튼 페이징 - 첫시작 인덱스
+        model.addAttribute("lastBtnIndex", pagination.getLastBtnIndex()); //섹션 변경 위함
+        model.addAttribute("totalPage", pagination.getTotalPages()); //끝 버튼 위함
+
+        //서비스 엔티티 추가후 주석 풀고 사용
+        Page<Af_project_info_1Entity> pageList = api1Service.selectALLTable(selectKey, titleText, pageable);
+        model.addAttribute("nowurl0","/admin/solution/list");
+
+
+        model.addAttribute("solutionlist", pageList); //페이지 객체 리스트
+
+        return "/admin/solution/list :: #intable";
+    }
+
 }

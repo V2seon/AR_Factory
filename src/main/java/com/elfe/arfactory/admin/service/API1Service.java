@@ -1,6 +1,7 @@
 package com.elfe.arfactory.admin.service;
 
 //import com.elfe.arfactory.admin.repository.Af_project_info_1Repository;
+import com.elfe.arfactory.admin.predicate.ASolutionPredicate;
 import com.elfe.arfactory.promotion.dto.Af_project_info_1Dto;
 import com.elfe.arfactory.promotion.repository.Af_project_info_1Repository;
 import com.elfe.arfactory.promotion.entity.Af_project_info_1Entity;
@@ -26,5 +27,11 @@ public class API1Service {
     @Transactional
     public Page<Af_project_info_1Entity> getAPI1List(Pageable pageable){
         return api1Repository.findAPI1AllList(pageable);
+    }
+
+
+    @Transactional
+    public Page <Af_project_info_1Entity> selectALLTable(String selectKey, String titleText, Pageable pageable){
+        return api1Repository.findAll(ASolutionPredicate.search(selectKey, titleText),pageable);
     }
 }
