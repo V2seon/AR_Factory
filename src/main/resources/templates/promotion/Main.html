@@ -20,29 +20,7 @@
 <div th:insert="/promotion/nav/navbar.html"></div>
 <div class="mainbox" th:each="Co : ${view}">
     <div class="subbox1">
-        <div class="swiper">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide" th:if="${Co.get('img1')} != ''">
-                    <img th:src="${Co.get('img1')}">
-                </div>
-                <div class="swiper-slide" th:if="${Co.get('img2')} != ''">
-                    <img th:src="${Co.get('img2')}">
-                </div>
-                <div class="swiper-slide" th:if="${Co.get('img3')} != ''">
-                    <img th:src="${Co.get('img3')}">
-                </div>
-                <div class="swiper-slide" th:if="${Co.get('img4')} != ''">
-                    <img th:src="${Co.get('img4')}">
-                </div>
-                <div class="swiper-slide" th:if="${Co.get('img5')} != ''">
-                    <img th:src="${Co.get('img5')}">
-                </div>
-                <div class="swiper-slide" th:if="${Co.get('img6')} != ''">
-                    <img th:src="${Co.get('img6')}">
-                </div>
-            </div>
-            <div class="swiper-pagination"></div>
-        </div>
+        <div class="reviewbox"></div>
         <div class="reviewbox">
                 <div>
                     <span th:text="${Co.get('name')}" id="api1_name"></span>
@@ -119,6 +97,36 @@
             <div class="databox" th:id="'databox1'+${Co.get('seq')}">
                 <span>콘텐츠 소개</span>
                 <div th:id="'api2_con'+${Co.get('seq')}" th:text="${Co.get('data')}">
+                </div>
+                <div class="swiper">
+                    <div class="swiper-wrapper" style="margin-bottom:10px;">
+                        <div class="swiper-slide" th:if="${Co.get('img1')} != ''">
+                            <img class="img2" th:src="${Co.get('img1')}">
+                        </div>
+                        <div class="swiper-slide" th:if="${Co.get('img2')} != ''">
+                            <img class="img2" th:src="${Co.get('img2')}">
+                        </div>
+                        <div class="swiper-slide" th:if="${Co.get('img3')} != ''">
+                            <img class="img2" th:src="${Co.get('img3')}">
+                        </div>
+                        <div class="swiper-slide" th:if="${Co.get('img4')} != ''">
+                            <img class="img2" th:src="${Co.get('img4')}">
+                        </div>
+                        <div class="swiper-slide" th:if="${Co.get('img5')} != ''">
+                            <img class="img2" th:src="${Co.get('img5')}">
+                        </div>
+                        <div class="swiper-slide" th:if="${Co.get('img6')} != ''">
+                            <img class="img2" th:src="${Co.get('img6')}">
+                        </div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+
+                    <!-- If we need navigation buttons -->
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+
+                    <!-- If we need scrollbar -->
+                    <div class="swiper-scrollbar"></div>
                 </div>
             </div>
             <div class="databox" th:id="'databox2'+${Co.get('seq')}" style="display:none;">

@@ -53,26 +53,22 @@ cursor:pointer;
 }
 
 
-
-
 .swiper {
   width: 500px;
   height: 50%;
   position: relative;
 }
 
-.swiper .swiper-slide {
+.swiper-slide {
   height: 100%;
-  background-color: orange;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 24px;
-  font-weight: bold;
+  width:15%;
 }
 
-
+.img2{
+width:100%;
+}
 
 .swiper-pagination {
   color: white;
 }
+

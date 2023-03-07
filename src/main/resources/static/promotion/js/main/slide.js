@@ -1,16 +1,14 @@
 var mySwiper  = new Swiper('.swiper', {
-  autoplay: {
-    delay: 5000,
-    disableOnInteraction: false
-  },
-  loop: true,
-  slidesPerView: 1,
-  spaceBetween: 0,
-  centeredSlides: true,
+  slidesPerView: 3,
+  spaceBetween: 10,
   loopAdditionalSlides: 1,
-  pagination: {
-    el: '.swiper-pagination',
-    clickable: true
+  navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+  },
+  scrollbar: {
+    el: '.swiper-scrollbar',
+    draggable: true
   }
 })
 

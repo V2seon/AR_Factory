@@ -32,6 +32,12 @@ public class MainController {
     private Af_reviewRepository af_reviewRepository;
 
     @GetMapping("/")
+    public String test(){
+        return "/promotion/index";
+    }
+
+
+    @GetMapping("/test")
     public String main(Model m, HttpServletRequest request){
 
         List<Af_project_info_1Entity> viewconlist = af_project_info_1Repository.findAll(1L);
