@@ -67,4 +67,15 @@ public interface Af_reviewRepository extends JpaRepository<Af_reviewEntity, Long
     @Query(value = "UPDATE AF_REVIEW SET API1_SEQ=:pac, AR_NAME =:name, AR_CONTENT =:text, AR_STAR =:star, AR_STATE =:state, AR_UDATETIME =:sdf where AR_SEQ =:no" , nativeQuery = true)
     void updateARData(Long no, Long pac, String name, String text, float star, int state, LocalDateTime sdf);
 
+    // promotion
+    // 후기 평점 계산
+    @Query(value = "SELECT AVG(AR_STAR) FROM AF_REVIEW", nativeQuery = true)
+    float starAVG();
+
+    // promotion
+    // 후기 개수 계산
+    @Query(value = "SELECT COUNT(AR_STAR) FROM AF_REVIEW", nativeQuery = true)
+    int starCOUNT();
+
+
 }

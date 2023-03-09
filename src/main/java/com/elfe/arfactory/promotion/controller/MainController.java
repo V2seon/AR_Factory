@@ -32,15 +32,20 @@ public class MainController {
     private Af_reviewRepository af_reviewRepository;
 
     @GetMapping("/")
-    public String test(){
-        return "/promotion/index";
-    }
-
-
-    @GetMapping("/test")
     public String main(Model m, HttpServletRequest request){
 
+        String avgsave="";
+
         List<Af_project_info_1Entity> viewconlist = af_project_info_1Repository.findAll(1L);
+
+//            System.out.println("check"+viewconlist.get(2).getAPI1_SEQ());
+
+        List<Af_project_info_1Entity> allview = af_project_info_1Repository.findAll();
+
+        float staravg = af_reviewRepository.starAVG();
+        int starcount = af_reviewRepository.starCOUNT();
+
+
         List view = new ArrayList<>();
         for(int i=0; i<viewconlist.size(); i++){
             HashMap<String,Object> ad = new HashMap<String,Object>();
@@ -75,9 +80,20 @@ public class MainController {
             ad.put("lang","KOR");
             ad.put("avg",String.format("%.1f",avg));
             view.add(ad);
+//            System.out.println(avg);
         }
-
         m.addAttribute("view",view);
+        m.addAttribute("allview",allview);
+        m.addAttribute("staravg",String.format("%.1f",staravg));
+        m.addAttribute("starcount",starcount);
+
+
+//        for(int i=0; i<view.size(); i++) {
+//            System.out.println(view.get(i).toString());
+//        }
+        for(int i=0; i<allview.size(); i++) {
+            System.out.println(allview.get(i).getAPI1_SEQ());
+        }
 
 
 
@@ -89,7 +105,7 @@ public class MainController {
 
 //        System.out.println("상태 1 인 후기 별점 평균값 = " +listcount1.get().getAR_STAR());
 
-        return "/promotion/Main";
+        return "/promotion/yMain";
     }
 
     @GetMapping("/Eng_Af")
