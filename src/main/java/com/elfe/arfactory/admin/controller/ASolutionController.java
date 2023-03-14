@@ -85,14 +85,14 @@ public class ASolutionController {
     @ResponseBody
     @RequestMapping(method = RequestMethod.POST, value = "/add")
     public HashMap<String, String> solutionAddData(Model m, HttpServletRequest request,
-                                                   @RequestParam(required = false, defaultValue = "", value = "name") String name,
-                                                   @RequestParam(required = false, defaultValue = "", value = "type") String type,
-                                                   @RequestParam(required = false, defaultValue = "", value = "name_e") String name_e,
-                                                   @RequestParam(required = false, defaultValue = "", value = "type_e") String type_e,
-                                                   @RequestParam(required = false, defaultValue = "", value = "googleLink") String googleLink,
-                                                   @RequestParam(required = false, defaultValue = "", value = "appleLink") String appleLink,
-                                                   @RequestParam(required = false, defaultValue = "", value = "mainNum") int mainNum,
-                                                   @RequestParam(required = false, defaultValue = "", value = "show") int show) {
+                                                   @RequestParam(required = false, defaultValue = " ", value = "name") String name,
+                                                   @RequestParam(required = false, defaultValue = " ", value = "type") String type,
+                                                   @RequestParam(required = false, defaultValue = " ", value = "name_e") String name_e,
+                                                   @RequestParam(required = false, defaultValue = " ", value = "type_e") String type_e,
+                                                   @RequestParam(required = false, defaultValue = " ", value = "googleLink") String googleLink,
+                                                   @RequestParam(required = false, defaultValue = " ", value = "appleLink") String appleLink,
+                                                   @RequestParam(required = false, defaultValue = " ", value = "mainNum") int mainNum,
+                                                   @RequestParam(required = false, defaultValue = " ", value = "show") int show) {
         LocalDateTime sdf = LocalDateTime.now();
         Af_project_info_1Dto api1Dto = new Af_project_info_1Dto(null, name, type, name_e, type_e, googleLink, appleLink, mainNum, show, sdf, sdf);
         api1Service.api1Save(api1Dto);

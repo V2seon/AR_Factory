@@ -96,36 +96,21 @@ function solution_add(){
             text: "패키지 이름을 입력해주세요.",
             icon: "info"
         });
-    }else if(type==null||type==""){
-        swal({
-            text: "패키지 타입을 입력해주세요.",
-            icon: "info"
-        });
     }else if(name_e==null||name_e==""){
         swal({
             text: "영문 패키지 이름을 입력해주세요.",
             icon: "info"
         });
+    }else if(type==null||type==""){
+        type = " ";
     }else if(type_e==null||type_e==""){
-        swal({
-            text: "영문 패키지 타입을 입력해주세요.",
-            icon: "info"
-        });
+        type_e = " ";
     }else if(googleLink==null||googleLink==""){
-        swal({
-            text: "구글 스토어 링크를 입력해주세요.",
-            icon: "info"
-        });
+        googleLink = " ";
     }else if(appleLink==null||appleLink==""){
-        swal({
-            text: "애플 앱스토어 링크를 입력해주세요.",
-            icon: "info"
-        });
+        appleLink = " ";
     }else if(mainNum==null||mainNum==""){
-        swal({
-            text: "메인 페이지 솔루션 순서를 입력해주세요.",
-            icon: "info"
-        });
+        mainNum = " ";
     }else{
         $('#load').show();
         let sendData = {
@@ -314,4 +299,9 @@ function solution_delete(api1_seq){
             }
         });
     });
+}
+
+// 솔루션 리스트 페이지로 이동
+function solution_list(){
+    location.href = "/admin/solution/list"
 }
